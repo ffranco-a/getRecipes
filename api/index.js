@@ -19,10 +19,36 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
+// const { Diet, Recipe } = require('./src/db.js');
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
   server.listen(3001, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
+
+    // ↓ prueba para ver si funciona (EDIT: sí funciona uwu )
+
+    // const dietVegan = Diet.create({
+    //   name: 'Vegan',
+    // });
+
+    // const dietVegetarian = Diet.create({
+    //   name: 'Vegetarian',
+    // });
+
+    // const dietPescatarian = Diet.create({
+    //   name: 'Pescatarian',
+    // });
+
+    // const dietGlutenFree = Diet.create({
+    //   name: 'GlutenFree',
+    // });
+
+    // Promise.all([
+    //   dietVegan,
+    //   dietVegetarian,
+    //   dietPescatarian,
+    //   dietGlutenFree,
+    // ]).then(r => console.log('Dietas cargadas!'));
   });
 });
