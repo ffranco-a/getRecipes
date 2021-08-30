@@ -27,35 +27,35 @@ conn.sync({ force: true }).then(() => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
 
     // ↓ precargo las lista de dietas posibles de spoonacular.
-    const dietGlutenFree = Diet.create({
-      name: 'GlutenFree',
-      description:
-        'Eliminating gluten means avoiding wheat, barley, rye, and other gluten-containing grains and foods made from them (or that may have been cross contaminated).',
-    });
-    const dietKetogenic = Diet.create({
-      name: 'Ketogenic',
-      description:
-        'The keto diet is based more on the ratio of fat, protein, and carbs in the diet rather than specific ingredients. Generally speaking, high fat, protein-rich foods are acceptable and high carbohydrate foods are not.',
-    });
     const dietVegetarian = Diet.create({
       name: 'Vegetarian',
       description:
         'No ingredients may contain meat or meat by-products, such as bones or gelatin.',
     });
-    const dietLactoVegetarian = Diet.create({
-      name: 'Lacto-Vegetarian',
-      description:
-        'All ingredients must be vegetarian and none of the ingredients can be or contain egg.',
-    });
-    const dietOvoVegetarian = Diet.create({
-      name: 'Ovo-Vegetarian',
-      description:
-        'All ingredients must be vegetarian and none of the ingredients can be or contain dairy.',
-    });
     const dietVegan = Diet.create({
       name: 'Vegan',
       description:
         'No ingredients may contain meat or meat by-products, such as bones or gelatin, nor may they contain eggs, dairy, or honey.',
+    });
+    const dietGlutenFree = Diet.create({
+      name: 'GlutenFree',
+      description:
+        'Eliminating gluten means avoiding wheat, barley, rye, and other gluten-containing grains and foods made from them (or that may have been cross contaminated).',
+    });
+    const dietLactoVegetarian = Diet.create({
+      name: 'Lacto-Vegetarian',
+      description:
+      'All ingredients must be vegetarian and none of the ingredients can be or contain egg.',
+    });
+    const dietOvoVegetarian = Diet.create({
+      name: 'Ovo-Vegetarian',
+      description:
+      'All ingredients must be vegetarian and none of the ingredients can be or contain dairy.',
+    });
+    const dietKetogenic = Diet.create({
+      name: 'Ketogenic',
+      description:
+        'The keto diet is based more on the ratio of fat, protein, and carbs in the diet rather than specific ingredients. Generally speaking, high fat, protein-rich foods are acceptable and high carbohydrate foods are not.',
     });
     const dietPescetarian = Diet.create({
       name: 'Pescetarian',
@@ -84,6 +84,7 @@ conn.sync({ force: true }).then(() => {
       summary: 'Esponjoso bizcochuelo dulce para la merienda o el desayuno',
       spoonacularScore: 4,
       healthScore: 2,
+      analyzedInstructions: [],
     });
 
     const recipe2 = Recipe.create({
@@ -92,6 +93,7 @@ conn.sync({ force: true }).then(() => {
         'Tarta dulce con relleno de dulce de leche y cobertura de chocolate',
       spoonacularScore: 7,
       healthScore: 1,
+      analyzedInstructions: [],
     });
 
     const recipe3 = Recipe.create({
@@ -99,6 +101,7 @@ conn.sync({ force: true }).then(() => {
       summary: 'Fideos preparados con verduras y crema',
       spoonacularScore: 6,
       healthScore: 6,
+      analyzedInstructions: [],
     });
 
     const recipe4 = Recipe.create({
@@ -106,6 +109,7 @@ conn.sync({ force: true }).then(() => {
       summary: 'Empanadas argentinas rellenas de carne',
       spoonacularScore: 5,
       healthScore: 4,
+      analyzedInstructions: [],
     });
 
     const recipe5 = Recipe.create({
@@ -113,6 +117,7 @@ conn.sync({ force: true }).then(() => {
       summary: 'Carne molida cocinada en molde',
       spoonacularScore: 4,
       healthScore: 3,
+      analyzedInstructions: [],
     });
 
     Promise.all([

@@ -39,12 +39,12 @@ OK *Crear la base de datos en psql o PGAdmin con el nombre indicado. *
 *Fecha limite: 23/07/2021.
 
 -- Etapa II
-* Crear en el backend el CRUD (Create, Read, Update, Delete) de lo necesario especificado en el enunciado (VER ENDPOINTS PEDIDOS)
+OK? * Crear en el backend el CRUD (Create, Read, Update, Delete) de lo necesario especificado en el enunciado (VER ENDPOINTS PEDIDOS)
 
 
 
 -- Etapa III
-*Revisar con Postman que todas las rutas funcionen correctamente
+OK *Revisar con Postman que todas las rutas funcionen correctamente
 *Verificar en la base de datos que se estén persistiendo los datos de forma correctamente
 *IMPORTANTE: Revisar la tabla intermedia del muchos a muchos
 *OJO!: Acuerdense que si no sacan el force: true del index.js de API les va a borrar los datos cada vez que se reinicie el servidor
