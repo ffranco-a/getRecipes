@@ -4,12 +4,12 @@ const { DataTypes } = require('sequelize');
 module.exports = sequelize => {
   // defino el modelo
   sequelize.define('recipe', {
-    name: {
+    title: { // ← originalmente le había puesto "name" acá, pero como vi que desde la API esta prop me llega como "title" lo cambié. 
       type: DataTypes.STRING,
       allowNull: false,
     },
     summary: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT, // ← uso TEXT para que no tenga límite de caracteres
       allowNull: false,
     },
     spoonacularScore: {
@@ -18,8 +18,8 @@ module.exports = sequelize => {
     healthScore: {
       type: DataTypes.INTEGER,
     },
-    pasoAPaso: {
-      type: DataTypes.TEXT,
+    analyzedInstructions: {
+      type: DataTypes.ARRAY(DataTypes.TEXT),
     },
   });
 };
