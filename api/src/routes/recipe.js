@@ -9,7 +9,7 @@ recipe.post('/', async (req, res) => {
   if (!title || !summary)
     return res.status(500).json({
       error: '¡Las recetas sí o sí deben tener un nombre y una descripción!',
-    }); // ← Tengo el presentimiento que no hace falta controlar esto acá sino en el controlled form del front.........
+    }); // ← Tengo el presentimiento que no hace falta controlar esto acá sino en el `controlled form` del front.........
   const newRecipe = await Recipe.create({
     title,
     summary,

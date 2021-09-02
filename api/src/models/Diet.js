@@ -8,6 +8,9 @@ module.exports = sequelize => {
     },
     description: { // ← no era necesario pero quiero mostrarlo en el sitio igual, una breve descripción del tipo de dieta
       type: DataTypes.TEXT,
-    }
+    },
+  },
+  {
+    timestamps: false, // ← solo para no tener createdAt y updatedAt.
   });
 };
