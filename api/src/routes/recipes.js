@@ -1,45 +1,46 @@
 const { Router } = require('express');
-// const { Recipe, Diet } = require('../db.js');
-// const { Op } = require('sequelize'); // ← me traigo el `Op` para el filtrado con el query `?name`;
 const { dbGeneralSearch, dbSearchByName, dbSearchById } = require('../actions/DB-Searchs.js');
 const { apiGeneralSearch, apiSearchByName, apiSearchById } = require('../actions/API-Searchs.js');
 
 const recipes = Router();
 
-// GET request a la ruta /recipes
+// ↓ GET request a la ruta `/recipes`
 recipes.get('/', async (req, res) => {
+  // ↓ si me pasan name por query, busco por título de recetas,
   let { name } = req.query;
-  if (name) {    //    ← ← ← ← ← ← TENGO QUE RETOCAR
+  if (name) {
     let dbFiltered = await dbSearchByName(name);
     let apiFiltered = await apiSearchByName(name);
-    if (dbFiltered === null && apiFiltered === [])
-    return res
-      .status(404)
-      .json({ error: 'No se encontraron recetas con ese nombre' });
     let filtered = [...dbFiltered, ...apiFiltered];
+    if (filtered.length === 0)
+    return res
+      .status(404) // ← revisar códigos de error
+      .json({ error: 'No se encontraron recetas con ese nombre' });
     return res.json(filtered);
   }
 
+  // ↓ si no me pasan name, devuelvo todas las recetas,
   let dbSearch = await dbGeneralSearch();
   let apiSearch = await apiGeneralSearch();
   res.json([...dbSearch, ...apiSearch]);
 });
 
-// GET request a la ruta /recipes/${id}
+// ↓ GET request a la ruta `/recipes/${id}`
 recipes.get('/:idReceta', async (req, res) => {
-  const id = parseInt(req.params.idReceta);
-  if (isNaN(id))
-    // tiro error cuando no pasen un número por params
-    return res.status(400).json({ TypeError: '¡El id debe ser un número!' });
+  const id = req.params.idReceta;
 
-  let dbSearch = await dbSearchById(id);
-  if (dbSearch !== null) return res.json(dbSearch);
-  
+  // ↓ si el id es uuid busco en mi db (intentar parseIntearlo tira NaN)
+  if (isNaN(parseInt(id))) {
+    let dbSearch = await dbSearchById(id);
+    if (dbSearch !== null) return res.json(dbSearch);
+    return res.status(404).json({ error: 'No se encontró una receta con ese id :(' });
+  }
+  // ↓ si no entró al if anterior, busco en la API
   try {
     let apiSearch = await apiSearchById(id);
-    res.json(apiSearch);
+    return res.json(apiSearch);
   } catch (e) {
-    res.status(500).json({ error: 'No se encontró una receta con ese id :(' });
+    res.status(404).json({ error: 'No se encontró una receta con ese id :(' });
   }
 });
 

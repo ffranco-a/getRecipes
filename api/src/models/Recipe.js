@@ -4,11 +4,12 @@ const { DataTypes } = require('sequelize');
 module.exports = sequelize => {
   // defino el modelo
   sequelize.define('recipe', {
-    // id: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    //   primaryKey: true,
-    // },
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4, // ← esta línea genera los ids únicos para las recetas que se crean
+      allowNull: false,
+      primaryKey: true,
+    },
     title: { // ← originalmente le había puesto "name" acá, pero como vi que desde la API esta prop me llega como "title" lo cambié. 
       type: DataTypes.STRING,
       allowNull: false,
