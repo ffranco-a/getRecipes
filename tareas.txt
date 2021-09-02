@@ -1,24 +1,18 @@
 consultas:
 README línea 69: API de spoonacular tiene solicitudes limitadas, ¿cómo afecta eso a nuestro desempeño? -- a la 21hs se resetean los 150 puntos. Se pueden usar más de una APIKEY, con la máquina de mails descartables
-README línea 73: ¿cómo uso mis dos requests disponibles? ¿cómo los integro, los tendré que agregar a mi db así ya "quedan descargados/almacenados"?
+(ok) README línea 73: ¿cómo uso mis dos requests disponibles? ¿cómo los integro, los tendré que agregar a mi db así ya "quedan descargados/almacenados"?
 README línea 120: `formulario __controlado__` ¿es un form con hooks que validan la info en el momento que un usuario interactua con ellos?
-README línea 146: ¿cómo interactuan las dos bases de datos? ¿cómo las diferencio? -- ¿desde el frontend genero distintos urls para cada una?
+(ok) README línea 146: ¿cómo interactuan las dos bases de datos? ¿cómo las diferencio? -- ¿desde el frontend genero distintos urls para cada una? 
 
 
 todos:
-Recipe.js: Definir qué hago con el ID de las recetas
-Tests!
-GET Routes: incorporar el tipo de receta en cada resultado (usando la tabla intermedia Recipe_Diet)
+manejar los tipos de recetas en mi db (recipe.diets.map(d => d.name))
 POST recipe: revisar el errorhandler, probablemente deba ser en el formulario controlado dle front nomás
 ERROR CODES: revisar los números, y revisar qué se envía al front
+Tests!
 
-https://api.spoonacular.com/recipes/complexSearch?apiKey=97ab75c9d60143afafb383245d36b9a6
-
-https://api.spoonacular.com/recipes/716429/information?apiKey=97ab75c9d60143afafb383245d36b9a6
-
-?apiKey=97ab75c9d60143afafb383245d36b9a6
-
- 716429
+OK Recipe.js: Definir qué hago con el ID de las recetas !!!!!!!!!!!!!!!!!!!!!!!!!! LISTO.
+OK GET Routes: incorporar el tipo de receta en cada resultado (usando la tabla intermedia Recipe_Diet)
 
 ---------------------------------------------------------------
 ---------------------------  PASOS  ---------------------------
@@ -29,24 +23,24 @@ https://api.spoonacular.com/recipes/716429/information?apiKey=97ab75c9d60143afaf
 
 -- Etapa I
 OK *Generar el modelo entidad relación *
-OK? *Implementar los modelos de Sequelize * 
+OK *Implementar los modelos de Sequelize * 
 OK *Crear un archivo para cada Entidad *
 OK *Configurar las relaciones entre ellos en el archivo db.js *
-OK? *Conectar nuestro back-end con Postgres *
+OK *Conectar nuestro back-end con Postgres *
 OK *Crear el .env con las credenciales de Postgres *
 OK *Crear la base de datos en psql o PGAdmin con el nombre indicado. *
 
 *Fecha limite: 23/07/2021.
 
 -- Etapa II
-OK? * Crear en el backend el CRUD (Create, Read, Update, Delete) de lo necesario especificado en el enunciado (VER ENDPOINTS PEDIDOS)
+OK * Crear en el backend el CRUD (Create, Read, Update, Delete) de lo necesario especificado en el enunciado (VER ENDPOINTS PEDIDOS)
 
 
 
 -- Etapa III
 OK *Revisar con Postman que todas las rutas funcionen correctamente
 *Verificar en la base de datos que se estén persistiendo los datos de forma correctamente
-*IMPORTANTE: Revisar la tabla intermedia del muchos a muchos
+OK *IMPORTANTE: Revisar la tabla intermedia del muchos a muchos
 *OJO!: Acuerdense que si no sacan el force: true del index.js de API les va a borrar los datos cada vez que se reinicie el servidor
 
 
