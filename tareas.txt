@@ -6,13 +6,17 @@ README línea 120: `formulario __controlado__` ¿es un form con hooks que valida
 
 
 todos:
-manejar los tipos de recetas en mi db (recipe.diets.map(d => d.name))
+OK manejar los tipos de recetas en mi db (recipe.diets.map(d => d.name))
 POST recipe: revisar el errorhandler, probablemente deba ser en el formulario controlado dle front nomás
 ERROR CODES: revisar los números, y revisar qué se envía al front
+Agregar imagen!
 Tests!
 
 OK Recipe.js: Definir qué hago con el ID de las recetas !!!!!!!!!!!!!!!!!!!!!!!!!! LISTO.
 OK GET Routes: incorporar el tipo de receta en cada resultado (usando la tabla intermedia Recipe_Diet)
+
+
+buscar las sitios de comida para inspiracion
 
 ---------------------------------------------------------------
 ---------------------------  PASOS  ---------------------------

@@ -38,7 +38,7 @@ conn.sync({ force: true }).then(() => {
         'No ingredients may contain meat or meat by-products, such as bones or gelatin, nor may they contain eggs, dairy, or honey.',
     });
     const dietGlutenFree = Diet.create({
-      name: 'GlutenFree',
+      name: 'Gluten Free',
       description:
         'Eliminating gluten means avoiding wheat, barley, rye, and other gluten-containing grains and foods made from them (or that may have been cross contaminated).',
     });

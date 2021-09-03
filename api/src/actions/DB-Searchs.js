@@ -9,15 +9,28 @@ const INCLUDE = {
   },
 };
 
-// BÚSQUEDA GENERAL en la BASE DE DATOS LOCAL
-const dbGeneralSearch = () =>
-  Recipe.findAll({
+/////////////////////////////////////////////////
+//  BÚSQUEDA GENERAL en la BASE DE DATOS LOCAL
+//
+const dbGeneralSearch = async () => {
+  let recipes = await Recipe.findAll({
     include: INCLUDE,
   });
+  let response = [];
+  for (var i = 0; i < recipes.length; i++) {
+    response.push({
+      ...recipes[i].dataValues,
+      diets: recipes[i].dataValues.diets.map(diet => diet.name.toLowerCase()),
+    });
+  }
+  return response;
+};
 
-// BÚSQUEDA POR NOMBRE en la BASE DE DATOS LOCAL
-const dbSearchByName = name =>
-  Recipe.findAll({
+////////////////////////////////////////////////////
+//  BÚSQUEDA POR NOMBRE en la BASE DE DATOS LOCAL
+//
+const dbSearchByName = async name => {
+  let recipes = await Recipe.findAll({
     where: {
       title: {
         [Op.iLike]: `%${name}%`, // ← el operador `iLike` es identico al `like` excepto que es Case-Insensitive (indiferente a las mayúsculas-minúsculas) ♥
@@ -25,13 +38,32 @@ const dbSearchByName = name =>
     },
     include: INCLUDE,
   });
+  let response = [];
+  for (var i = 0; i < recipes.length; i++) {
+    response.push({
+      ...recipes[i].dataValues,
+      diets: recipes[i].dataValues.diets.map(diet => diet.name.toLowerCase()),
+    });
+  }
+  return response;
+};
 
-// BÚSQUEDA POR ID en la BASE DE DATOS LOCAL
-const dbSearchById = id =>
-  Recipe.findByPk(id, {
+////////////////////////////////////////////////
+//  BÚSQUEDA POR ID en la BASE DE DATOS LOCAL
+//
+const dbSearchById = async id => { // Recipe.findByPk(id, { include: INCLUDE });
+
+// {
+  let recipe = await Recipe.findByPk(id, {
     include: INCLUDE,
   });
-
+  console.log('dbSearchById: ',recipe);
+  let response = [{
+    ...recipe.dataValues,
+    diets: recipe.dataValues.diets.map(diet => diet.name.toLowerCase()),
+  }];
+  return response;
+};
 
 module.exports = {
   dbGeneralSearch,
