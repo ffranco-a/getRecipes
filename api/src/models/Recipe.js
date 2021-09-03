@@ -5,7 +5,7 @@ module.exports = sequelize => {
   // defino el modelo
   sequelize.define('recipe', {
     id: {
-      type: DataTypes.UUID,
+      type: DataTypes.UUID, // ← "universal unique identifier"
       defaultValue: DataTypes.UUIDV4, // ← esta línea genera los ids únicos para las recetas que se crean
       allowNull: false,
       primaryKey: true,
@@ -27,5 +27,9 @@ module.exports = sequelize => {
     analyzedInstructions: {
       type: DataTypes.ARRAY(DataTypes.TEXT),
     },
+    // image: {
+    //   type: DataTypes.STRING,
+    //   defaultValue: '',
+    // }
   });
 };

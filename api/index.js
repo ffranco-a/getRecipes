@@ -23,7 +23,7 @@ const { Diet, Recipe } = require('./src/db.js');
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
-  server.listen(3001, () => {
+  server.listen(3001, async () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
 
     // ↓ precargo las lista de dietas posibles de spoonacular.
@@ -79,15 +79,16 @@ conn.sync({ force: true }).then(() => {
     });
 
     // ↓ precargo algunas recetas de prueba para ver si funciona (EDIT: sí funciona uwu )
-    const recipe1 = Recipe.create({
+    const recipe1 = await Recipe.create({
       title: 'Budín de naranja',
       summary: 'Esponjoso bizcochuelo dulce para la merienda o el desayuno',
       spoonacularScore: 4,
       healthScore: 2,
       analyzedInstructions: [],
     });
+    recipe1.addDiet(1);
 
-    const recipe2 = Recipe.create({
+    const recipe2 = await Recipe.create({
       title: 'Tarta Cabsha',
       summary:
         'Tarta dulce con relleno de dulce de leche y cobertura de chocolate',
@@ -95,14 +96,16 @@ conn.sync({ force: true }).then(() => {
       healthScore: 1,
       analyzedInstructions: [],
     });
+    recipe2.addDiet(1);
 
-    const recipe3 = Recipe.create({
+    const recipe3 = await Recipe.create({
       title: 'Pastas primavera',
       summary: 'Fideos preparados con verduras y crema',
       spoonacularScore: 6,
       healthScore: 6,
       analyzedInstructions: [],
     });
+    recipe3.addDiet(1);
 
     const recipe4 = Recipe.create({
       title: 'Empanadas de osobuco',
@@ -112,13 +115,14 @@ conn.sync({ force: true }).then(() => {
       analyzedInstructions: [],
     });
 
-    const recipe5 = Recipe.create({
+    const recipe5 = await Recipe.create({
       title: 'Pan de carne',
       summary: 'Carne molida cocinada en molde',
       spoonacularScore: 4,
       healthScore: 3,
       analyzedInstructions: [],
     });
+    recipe5.addDiet(3);
 
     Promise.all([
       dietGlutenFree,
