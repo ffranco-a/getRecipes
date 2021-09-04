@@ -12,7 +12,7 @@ recipes.get('/', async (req, res) => {
   let { name } = req.query;
   if (name) {
     let dbFiltered = await dbSearchByName(name);
-    return res.json(dbFiltered); // ← ← ← DELETE ME DELETE ME DELETE ME DELETE ME
+    // return res.json(dbFiltered); // ← ← ← DELETE ME DELETE ME DELETE ME DELETE ME
     let apiFiltered = await apiSearchByName(name);
     let filtered = [...dbFiltered, ...apiFiltered];
     if (filtered.length === 0)
@@ -24,9 +24,9 @@ recipes.get('/', async (req, res) => {
 
   // ↓ si no me pasan name, devuelvo "todas" las recetas,
   let dbSearch = await dbGeneralSearch();
-  res.json(dbSearch); // ← ← ← DELETE ME y descomentar las líneas de abajo
-  // let apiSearch = await apiGeneralSearch();
-  // res.json([...dbSearch, ...apiSearch]);
+  // res.json(dbSearch); // ← ← ← DELETE ME y descomentar las líneas de abajo
+  let apiSearch = await apiGeneralSearch();
+  res.json([...dbSearch, ...apiSearch]);
 });
 
 ///////////////////////////////////////////////

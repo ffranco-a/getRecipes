@@ -28,7 +28,7 @@ const apiGeneralSearch = () =>
             healthScore: recipe.healthScore,
             analyzedInstructions: recipe.analyzedInstructions,
             diets: recipe.diets,
-            //img??
+            image: recipe.image,
           },
         ];
       }
@@ -63,7 +63,7 @@ const apiSearchByName = name =>
             healthScore: recipe.healthScore,
             analyzedInstructions: recipe.analyzedInstructions,
             diets: recipe.diets,
-            //img??
+            image: recipe.image,
           },
         ];
       }
@@ -85,7 +85,7 @@ const apiSearchById = id =>
         healthScore: response.data.healthScore,
         analyzedInstructions: response.data.analyzedInstructions,
         diets: response.data.diets,
-        //img??
+        image: recipe.image,
       };
     })
     .catch(() => {
@@ -97,42 +97,3 @@ module.exports = {
   apiSearchByName,
   apiSearchById,
 };
-
-// https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY4}&addRecipeInformation=true&query=${title}
-// get all recipes (100)
-// https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY4}&addRecipeInformation=true&number=100
-
-// async function getRecipes(_req, res, next) {
-//   try {
-//     const getRecipes = await axios.get(
-//       `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY4}&addRecipeInformation=true&number=100`
-//     );
-//     const dbRecipes = await Recipe.findAll({
-//       include: Diet,
-//     });
-
-//     if (dbRecipes.length === 0) return res.send(getRecipes.data.results);
-//     let arrayResponse = [];
-
-//     for (let j = 0; j < dbRecipes.length; j++) {
-//       let dietsMap = [];
-//       dbRecipes[j].diets.map((diet) => dietsMap.push(diet.name));
-//       let objectResponseDB = {
-//         id: dbRecipes[j].id,
-//         title: dbRecipes[j].title,
-//         summary: dbRecipes[j].summary,
-//         spoonacularScore: dbRecipes[j].spoonacularScore,
-//         healthScore: dbRecipes[j].healthScore,
-//         analyzedInstructions: dbRecipes[j].analyzedInstructions,
-//         diets: dietsMap,
-//         image: dbRecipes[j].image,
-//       };
-//       arrayResponse.push(objectResponseDB);
-//     }
-//     const concatRecipes = arrayResponse.concat(getRecipes.data.results);
-//     return res.send(concatRecipes);
-//   }
-//   catch (error) {
-//     next(error);
-//   }
-// }

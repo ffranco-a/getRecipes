@@ -51,8 +51,8 @@ OK *IMPORTANTE: Revisar la tabla intermedia del muchos a muchos
 
 
 -- Etapa IV
-*Crear la página principal (con estilos mínimos, margin, padding, display, position, width, height)
-*Crear la Home (con estilos mínimos): inlcluyendo una barra de búsqueda
+OK *Crear la página principal (con estilos mínimos, margin, padding, display, position, width, height)
+OK *Crear la Home (con estilos mínimos): inlcluyendo una barra de búsqueda
 *Configurar Redux: Diseñar que datos se van a almacenar en el Store y pensar que acciones van a necesitar.
 Implementar el reducer y las actions para que inicialmente traiga los primeros resultados que se van a mostrar en la home y renderizarlos
 

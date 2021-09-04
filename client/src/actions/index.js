@@ -8,11 +8,11 @@ export function getRecipes() {
   return function (dispatch) {
     axios
       .get('http://localhost:3001/recipes')
-      .then(response => { // ← ← DELETE ME !!!!
-        console.log(response);
-        return response;
-      })
-      // .then(response => dispatch({ type: GET_RECIPES, payload: response }));
+      // .then(response => { // ← ← DELETE ME !!!!
+      //   console.log(response);
+      //   return response;
+      // })
+      .then(response => dispatch({ type: GET_RECIPES, payload: response.data }));
   };
 }
 

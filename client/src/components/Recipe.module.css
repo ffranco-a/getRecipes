@@ -1,0 +1,24 @@
+.recipeCardContainer {
+  
+  /* border: 2px solid black; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2em;
+  padding: 1em 3em; 
+  width: 20%;
+  /* max-width: 200px; */
+  height: 150px;
+  background-position: center;
+  background-size: cover;
+}
+
+.recipeCardInfo {
+  padding: 10px;
+  font-size: 1.1rem;
+  /* border: 1px solid black; */
+  color: white;
+  text-align: center;
+  backdrop-filter: blur(2px);
+  background-color: #4442;
+}
