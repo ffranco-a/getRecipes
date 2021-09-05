@@ -2,7 +2,7 @@
 
 import { GET_RECIPES, GET_RECIPE_BY_ID } from '../actions/index.js';
 
-const reducer = {
+const rootReducer = {
   recipes: [
     {
       id: 'f6e5a7d1-a786-4bb9-8160-dfc29f58c60c',
@@ -88,10 +88,10 @@ const reducer = {
     },
   ],
   // favorites: [],
-  // detalle?: {},
+  details: {},
 };
 
-export default (state = reducer, action) => {
+const reducer = (state = rootReducer, action) => {
   switch (action.type) {
     case GET_RECIPES:
       return {
@@ -99,8 +99,13 @@ export default (state = reducer, action) => {
         recipes: [...action.payload], // REVISAR ! ! !
       };
     case GET_RECIPE_BY_ID:
-      return; // REVISAR ! ! !
+      return {
+        ...state,
+        details: {...action.payload}
+      }; // REVISAR ! ! !
     default:
       return { ...state };
   }
 };
+
+export default reducer;

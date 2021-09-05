@@ -8,7 +8,7 @@ const apiGeneralSearch = () =>
   axios
     .get(
       // `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true`
-      'https://api.spoonacular.com/recipes/complexSearch', // ← esta forma y la de arriba ↑ son equivalentes
+      'https://api.spoonacular.com/recipes/complexSearch', // ← esta forma y la de arriba ↑ son equivalentes, por cómo se maneja axios
       {
         params: {
           apiKey: API_KEY,
@@ -19,7 +19,7 @@ const apiGeneralSearch = () =>
     )
     .then(response => {
       let recipes = [];
-      for (var recipe of response.data.results) {  // ← un bucle `for...in` no me devolvía nada, supuse que era porque el objeto que axios me devuelve no tenía keys, sino directamente objetos en sí como los valores. Leí que el `for...of` era una alternativa, y me funciona perfecto por suerte ♥
+      for (var recipe of response.data.results) {  // ← un bucle `for...in` no me devolvía nada, leí la documentación y aparentemente era porque el objeto que axios me devuelve no tenía keys, sino directamente objetos en sí como los valores. Leí que el `for...of` era una alternativa, y me funciona perfecto por suerte ♥
         recipes = [
           ...recipes,
           {
@@ -38,7 +38,7 @@ const apiGeneralSearch = () =>
       // return response.data; // results
     })
     .catch(error => {
-      throw new Error('Ocurrió un error');
+      throw new Error('Ocurrió un error en apiGeneralSearch');
     });
 
 ///////////////////////////////////
@@ -72,7 +72,10 @@ const apiSearchByName = name =>
         ];
       }
       return recipes;
-    });
+    })
+    .catch(() => {
+      throw new Error('Ocurrió un error en apiSearchByName');
+    });;
 
 ///////////////////////////////
 // BÚSQUEDA POR ID en la API
@@ -91,11 +94,11 @@ const apiSearchById = id =>
         healthScore: response.data.healthScore,
         analyzedInstructions: response.data.analyzedInstructions,
         diets: response.data.diets,
-        image: recipe.image,
+        image: response.data.image,
       };
     })
     .catch(() => {
-      throw new Error('Ocurrió un error');
+      throw new Error('Ocurrió un error en apiSearchById');
     });
 
 /////////////////////

@@ -5,6 +5,7 @@ import { Route } from "react-router-dom";
 import Landing from "./components/Landing.jsx";
 import NavBar from "./components/NavBar.jsx";
 import Recipes from "./components/Recipes.jsx";
+import Detail from "./components/Detail.jsx";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Route exact path="/" component={Landing} />
       <Route path="/home" component={NavBar} />
       <Route exact path="/home" component={Recipes} />
+      <Route exact path="/recipe/:id" component={Detail} />
     </Provider>
   );
 }
