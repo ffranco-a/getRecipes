@@ -1,7 +1,9 @@
 const axios = require('axios').default;
 const { API_KEY } = process.env;
 
+////////////////////////////////
 // BÚSQUEDA GENERAL en la API
+//
 const apiGeneralSearch = () =>
   axios
     .get(
@@ -39,7 +41,9 @@ const apiGeneralSearch = () =>
       throw new Error('Ocurrió un error');
     });
 
+///////////////////////////////////
 // BÚSQUEDA POR NOMBRE en la API
+//
 const apiSearchByName = name =>
   axios
     .get('https://api.spoonacular.com/recipes/complexSearch', {
@@ -70,7 +74,9 @@ const apiSearchByName = name =>
       return recipes;
     });
 
+///////////////////////////////
 // BÚSQUEDA POR ID en la API
+//
 const apiSearchById = id =>
   axios
     .get(
@@ -92,6 +98,7 @@ const apiSearchById = id =>
       throw new Error('Ocurrió un error');
     });
 
+/////////////////////
 module.exports = {
   apiGeneralSearch,
   apiSearchByName,

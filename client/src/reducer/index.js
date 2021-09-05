@@ -1,10 +1,6 @@
 // reducer
 
-import {
-  GET_RECIPES,
-  GET_RECIPES_BY_ID,
-  GET_RECIPES_BY_NAME,
-} from '../actions/index.js';
+import { GET_RECIPES, GET_RECIPE_BY_ID } from '../actions/index.js';
 
 const reducer = {
   recipes: [
@@ -102,9 +98,7 @@ export default (state = reducer, action) => {
         ...state,
         recipes: [...action.payload], // REVISAR ! ! !
       };
-    case GET_RECIPES_BY_NAME:
-      return; // REVISAR ! ! !
-    case GET_RECIPES_BY_ID:
+    case GET_RECIPE_BY_ID:
       return; // REVISAR ! ! !
     default:
       return { ...state };

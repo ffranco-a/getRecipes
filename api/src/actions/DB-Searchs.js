@@ -51,9 +51,8 @@ const dbSearchByName = async name => {
 ////////////////////////////////////////////////
 //  BÚSQUEDA POR ID en la BASE DE DATOS LOCAL
 //
-const dbSearchById = async id => { // Recipe.findByPk(id, { include: INCLUDE });
+const dbSearchById = async id => {
 
-// {
   let recipe = await Recipe.findByPk(id, {
     include: INCLUDE,
   });
@@ -64,6 +63,7 @@ const dbSearchById = async id => { // Recipe.findByPk(id, { include: INCLUDE });
   return response;
 };
 
+////////////////////
 module.exports = {
   dbGeneralSearch,
   dbSearchByName,
