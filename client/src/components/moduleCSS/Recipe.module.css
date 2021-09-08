@@ -1,22 +1,26 @@
+
+
 .recipeCardContainer {
   
-  /* border: 2px solid black; */
+  border: 2px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 2em;
-  padding: 1em 3em; 
-  width: 20%;
-  /* max-width: 200px; */
+  /* padding: 1em 3em;  */
+  width: 25vw;
+  max-width: 200px;
   height: 150px;
+  /* min-width: 25%; */
+  min-height: fit-content;
   background-position: center;
   background-size: cover;
 }
 
 .recipeCardInfo {
-  padding: 10px;
+  margin: 1em 3em;
   font-size: 1.1rem;
-  /* border: 1px solid black; */
+  width: 100%;
   color: white;
   text-align: center;
   backdrop-filter: blur(2px);

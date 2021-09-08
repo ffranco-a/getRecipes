@@ -79,50 +79,50 @@ conn.sync({ force: true }).then(() => {
     });
 
     // ↓ precargo algunas recetas de prueba para ver si funciona (EDIT: sí funciona uwu )
-    const recipe1 = await Recipe.create({
-      title: 'Budín de naranja',
-      summary: 'Esponjoso bizcochuelo dulce para la merienda o el desayuno',
-      spoonacularScore: 4,
-      healthScore: 2,
-      analyzedInstructions: [],
-    });
-    recipe1.addDiet(1);
+    // const recipe1 = await Recipe.create({
+    //   title: 'Budín de naranja',
+    //   summary: 'Esponjoso bizcochuelo dulce para la merienda o el desayuno',
+    //   spoonacularScore: 4,
+    //   healthScore: 2,
+    //   analyzedInstructions: [],
+    // });
+    // recipe1.addDiet(1);
 
-    const recipe2 = await Recipe.create({
-      title: 'Tarta Cabsha',
-      summary:
-        'Tarta dulce con relleno de dulce de leche y cobertura de chocolate',
-      spoonacularScore: 7,
-      healthScore: 1,
-      analyzedInstructions: [],
-    });
-    recipe2.addDiet(1);
+    // const recipe2 = await Recipe.create({
+    //   title: 'Tarta Cabsha',
+    //   summary:
+    //     'Tarta dulce con relleno de dulce de leche y cobertura de chocolate',
+    //   spoonacularScore: 7,
+    //   healthScore: 1,
+    //   analyzedInstructions: [],
+    // });
+    // recipe2.addDiet(1);
 
-    const recipe3 = await Recipe.create({
-      title: 'Pastas primavera',
-      summary: 'Fideos preparados con verduras y crema',
-      spoonacularScore: 6,
-      healthScore: 6,
-      analyzedInstructions: [],
-    });
-    recipe3.addDiet(1);
+    // const recipe3 = await Recipe.create({
+    //   title: 'Pastas primavera',
+    //   summary: 'Fideos preparados con verduras y crema',
+    //   spoonacularScore: 6,
+    //   healthScore: 6,
+    //   analyzedInstructions: [],
+    // });
+    // recipe3.addDiet(1);
 
-    const recipe4 = Recipe.create({
-      title: 'Empanadas de osobuco',
-      summary: 'Empanadas argentinas rellenas de carne',
-      spoonacularScore: 5,
-      healthScore: 4,
-      analyzedInstructions: [],
-    });
+    // const recipe4 = Recipe.create({
+    //   title: 'Empanadas de osobuco',
+    //   summary: 'Empanadas argentinas rellenas de carne',
+    //   spoonacularScore: 5,
+    //   healthScore: 4,
+    //   analyzedInstructions: [],
+    // });
 
-    const recipe5 = await Recipe.create({
-      title: 'Pan de carne',
-      summary: 'Carne molida cocinada en molde',
-      spoonacularScore: 4,
-      healthScore: 3,
-      analyzedInstructions: [],
-    });
-    recipe5.addDiet(3);
+    // const recipe5 = await Recipe.create({
+    //   title: 'Pan de carne',
+    //   summary: 'Carne molida cocinada en molde',
+    //   spoonacularScore: 4,
+    //   healthScore: 3,
+    //   analyzedInstructions: [],
+    // });
+    // recipe5.addDiet(3);
 
     Promise.all([
       dietGlutenFree,
@@ -135,11 +135,11 @@ conn.sync({ force: true }).then(() => {
       dietPaleo,
       dietPrimal,
       dietWhole30,
-      recipe1,
-      recipe2,
-      recipe3,
-      recipe4,
-      recipe5,
+      // recipe1,
+      // recipe2,
+      // recipe3,
+      // recipe4,
+      // recipe5,
     ]).then(r => console.log('Dietas y recetas cargadas!'));
   });
 });

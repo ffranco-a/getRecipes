@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import style from './NavBar.module.css';
+import style from './moduleCSS/NavBar.module.css';
 import { getRecipesByName } from '../actions';
 
 class NavBar extends Component {

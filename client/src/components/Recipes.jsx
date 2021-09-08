@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import style from './Recipes.module.css';
+import style from './moduleCSS/Recipes.module.css';
 import Recipe from './Recipe.jsx';
 import { getRecipes } from '../actions';
 
 class Recipes extends Component {
 
-  componentDidMount(){
-    this.props.getRecipes();
+  componentDidMount() {
+    if (this.props.recipes.length === 0) {
+      this.props.getRecipes();
+    }
   }
 
   render() {
