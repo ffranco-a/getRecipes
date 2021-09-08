@@ -1,16 +1,13 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getRecipeById } from '../actions';
 
-class Detail extends Component {
+function Detail({ details, getRecipeById, match}) {
+  useEffect(() => {
+    getRecipeById(match.params.id); // no está funcionando
+  }, [getRecipeById, match.params.id]);
 
-  componentDidMount() {
-    this.props.getRecipeById(this.props.match.params.id); // no está funcionando
-  }
-
-  render() {
-    return <h3>Details of {this.props.details.title}</h3>;
-  }
+  return <h3>Details of {details.title}</h3>;
 }
 
 const mapStateToProps = state => {

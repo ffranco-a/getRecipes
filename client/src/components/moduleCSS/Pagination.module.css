@@ -1,0 +1,28 @@
+.recipesContainer {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.pagesList {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.pagesList li {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 99px;
+  width: 20px;
+  text-align: center;
+}
+
+.pagesList li:hover {
+  background-color: #4441;
+}
+
+/* ↓ estilo para el botón activo de la lista de páginas*/
+.pagesList li.active {
+  background-color: #6664;
+}

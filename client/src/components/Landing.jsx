@@ -1,25 +1,21 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getRecipes } from '../actions';
 
-
-class Landing extends Component {
-
-  componentDidMount() {
-    if (this.props.recipes.length === 0) {
-      this.props.getRecipes();
+function Landing({ recipes, getRecipes }) {
+  
+  useEffect(() => {
+    if (recipes.length === 0) {
+      getRecipes();
     }
-  }
+  }, [recipes, getRecipes]);
 
-
-  render() {
-    return (
-      <div>
-        <Link to="/home">Entrar</Link>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Link to="/home">Entrar</Link>
+    </div>
+  );
 }
 
 const mapStateToProps = state => {
