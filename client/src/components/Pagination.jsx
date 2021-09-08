@@ -26,7 +26,8 @@ function Pagination({ recipes, getRecipes }) {
     pages.push(p);
   }
 
-  const handlePages = e => {
+  // mis tres handlers para controlar la página actual
+  const handlePage = e => {
     setPage(parseInt(e.target.id));
   };
 
@@ -42,26 +43,27 @@ function Pagination({ recipes, getRecipes }) {
     }
   };
 
-  const pagesList = pages.map(number => {
-    return (
-      <li
-        key={number}
-        id={number}
-        onClick={handlePages}
-        className={parseInt(page) === number ? style.active : null}
-      >
-        {number}
-      </li>
-    );
-  });
-
   return (
     <div>
+      {/* ↓ selector para el paginado */}
       <ul className={style.pagesList}>
         <li onClick={handlePrev}>←</li>
-        {pagesList}
+        {pages.map(num => {
+          return (
+            <li
+              key={num}
+              id={num}
+              onClick={handlePage}
+              className={parseInt(page) === num ? style.active : null}
+            >
+              {num}
+            </li>
+          );
+        })}
         <li onClick={handleNext}>→</li>
       </ul>
+
+      {/* ↓ nueve recetas */}
       <div className={style.recipesContainer}>
         {currentNineRecipes.map(recipe => {
           return (

@@ -1,0 +1,9 @@
+.createRecipe {
+  display: flex;
+  flex-direction: column;
+  margin: 50px 200px;
+}
+
+.diets {
+  flex-direction: row;
+}
