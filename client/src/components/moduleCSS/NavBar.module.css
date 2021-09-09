@@ -1,20 +1,6 @@
-.NavBar {
-  height: 80px;
-  border-bottom: 2px solid black;
+.navBar {
+  height: 50px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-}
-
-.searchBar {
-  height: 20px;
-  width: 400px;
-}
-
-.searchButton {
-  height: 20px;
-  border: none;
-  cursor: pointer;
-  position: relative;
-  right: 56px;
 }

@@ -11,7 +11,11 @@ export default function Receta({ title, image, diets, id }) {
       <Link to={`/home/recipe/${id}`} className={style.container}>
         <div className={style.recipeCardInfo}>
           <h3>{title}</h3>
-          <span>{diets}</span>
+          <div className={style.diets}>{diets.map((diet, index) => (
+            <div key={index}>
+              {diet}
+            </div>
+          ))}</div>
         </div>
       </Link>
     </div>

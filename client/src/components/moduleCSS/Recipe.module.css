@@ -1,20 +1,17 @@
-
-
 .recipeCardContainer {
-  
   border: 2px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2em;
-  /* padding: 1em 3em;  */
-  width: 25vw;
-  max-width: 200px;
-  height: 150px;
-  /* min-width: 25%; */
-  min-height: fit-content;
+  width: 90%;
+  height: 70%;
   background-position: center;
   background-size: cover;
+}
+
+.recipeCardContainer a {
+  text-decoration: none;
+  height: 100%;
 }
 
 .recipeCardInfo {
@@ -25,4 +22,9 @@
   text-align: center;
   backdrop-filter: blur(2px);
   background-color: #4442;
+}
+
+.diets {
+  font-size: 15px;
+  overflow-y: hidden;
 }

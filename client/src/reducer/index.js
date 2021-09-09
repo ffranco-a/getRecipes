@@ -1,6 +1,6 @@
 // reducer
 
-import { GET_RECIPES, GET_RECIPE_BY_ID } from '../actions/index.js';
+import { GET_RECIPES, GET_RECIPE_BY_ID, GET_TYPES } from '../actions/index.js';
 
 const rootReducer = {
   // recipes: [
@@ -90,6 +90,7 @@ const rootReducer = {
   // favorites: [],
   recipes: [],
   details: {},
+  diets: [],
 };
 
 const reducer = (state = rootReducer, action) => {
@@ -97,13 +98,18 @@ const reducer = (state = rootReducer, action) => {
     case GET_RECIPES:
       return {
         ...state,
-        recipes: [...action.payload], // REVISAR ! ! !
+        recipes: [...action.payload],
       };
     case GET_RECIPE_BY_ID:
       return {
         ...state,
-        details: {...action.payload}
-      }; // REVISAR ! ! !
+        details: { ...action.payload },
+      };
+    case GET_TYPES:
+      return {
+        ...state,
+        diets: [...action.payload],
+      };
     default:
       return { ...state };
   }

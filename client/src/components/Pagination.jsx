@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import style from './moduleCSS/Pagination.module.css';
 import Recipe from './Recipe.jsx';
 import { getRecipes } from '../actions';
+import SearchBar from './SearchBar';
 
 function Pagination({ recipes, getRecipes }) {
   const [page, setPage] = useState(1);
@@ -13,9 +14,9 @@ function Pagination({ recipes, getRecipes }) {
     }
   }, [recipes.length, getRecipes]);
 
-  useEffect(() => {
-    setPage(1);
-  }, [recipes, setPage]);
+  // useEffect(() => {
+  //   setPage(1);
+  // }, [recipes, setPage]);
 
   const firstRecipe = (page - 1) * 9;
   const lastRecipe = page * 9;
@@ -45,6 +46,22 @@ function Pagination({ recipes, getRecipes }) {
 
   return (
     <div>
+      <SearchBar />
+
+      {/* ↓ nueve recetas */}
+      <div className={style.recipesContainer}>
+        {currentNineRecipes.map(recipe => {
+          return (
+            <Recipe
+              key={recipe.id}
+              id={recipe.id}
+              title={recipe.title}
+              image={recipe.image}
+              diets={recipe.diets}
+            />
+          );
+        })}
+      </div>
       {/* ↓ selector para el paginado */}
       <ul className={style.pagesList}>
         <li onClick={handlePrev}>←</li>
@@ -62,21 +79,6 @@ function Pagination({ recipes, getRecipes }) {
         })}
         <li onClick={handleNext}>→</li>
       </ul>
-
-      {/* ↓ nueve recetas */}
-      <div className={style.recipesContainer}>
-        {currentNineRecipes.map(recipe => {
-          return (
-            <Recipe
-              key={recipe.id}
-              id={recipe.id}
-              title={recipe.title}
-              image={recipe.image}
-              diets={recipe.diets}
-            />
-          );
-        })}
-      </div>
     </div>
   );
 }

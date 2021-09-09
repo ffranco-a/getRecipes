@@ -1,12 +1,12 @@
 .createRecipe {
+  margin: 50px 100px;
   display: flex;
   flex-direction: column;
-  margin: 50px 100px;
 }
 
-.instructions .step input {
+.step {
   flex-direction: column;
-  /* width: 100%; */
+  width: 100%;
 }
 
 .diets {

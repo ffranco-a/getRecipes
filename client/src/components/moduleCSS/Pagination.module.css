@@ -1,7 +1,10 @@
 .recipesContainer {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 20vw 20vw 20vw;
+  grid-template-rows: 25vh 25vh 25vh;
+  gap: 0 5vw;
+  justify-content: center;
+  align-items: center;
 }
 
 .pagesList {
