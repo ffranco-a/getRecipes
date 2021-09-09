@@ -8,6 +8,7 @@ function CreateRecipe() {
     image:
       'https://images.unsplash.com/photo-1506368249639-73a05d6f6488?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1868&q=80',
   });
+
   const [diets, setDiets] = useState({
     vegetarian: false,
     vegan: false,
@@ -15,9 +16,8 @@ function CreateRecipe() {
   });
 
   const [instructions, setInstructions] = useState([]);
-  let stepNumber = 1;
   const stepModel = {
-    number: stepNumber,
+    number: instructions.length + 1,
     step: '',
   };
 
@@ -35,9 +35,19 @@ function CreateRecipe() {
     });
   };
 
+  const handleAddStep = () => {
+    setInstructions([...instructions, { ...stepModel }]);
+  };
+
+  const handleRemoveLastStep = () => {
+    const deleteLastStep = instructions.slice(0, instructions.length - 1);
+    setInstructions(deleteLastStep);
+  };
+
   const handleInstructions = e => {
-    setInstructions(instructions.push(stepModel))
-    stepNumber++;
+    const newInstructions = [...instructions];
+    instructions[e.target.name - 1].step = e.target.value;
+    setInstructions(newInstructions);
   };
 
   const handleSubmit = e => {
@@ -46,18 +56,27 @@ function CreateRecipe() {
 
   return (
     <form className={style.createRecipe}>
-      <label>Recipe title:</label>
+      <label>Recipe title:*</label>
       <input type="text" name="title" onChange={handleChange} />
-      <label>Summary:</label>
+      <label>summary:*</label>
       <input type="text" name="summary" onChange={handleChange} />
-      <label>Instructions:</label>
-      {instructions.map(i => {
-        <div key={i.number}>
-          <label>{i.stepNumber}</label>
-          <input></input>
-        </div>
-      })}
-      <input type="button" value="Add step" onClick={handleInstructions} />
+      {/* Dynamic step by step instructions */}
+      <label>Step by step:</label>
+      <ol className={style.instructions}>
+        {instructions.map(i => (
+          <li key={i.number} className={style.step}>
+            <input name={i.number} onChange={handleInstructions}></input>
+          </li>
+        ))}
+        <input type="button" value="Add step" onClick={handleAddStep} />
+        <input
+          type="button"
+          value="Remove last step"
+          onClick={handleRemoveLastStep}
+          style={instructions.length === 0 ? { visibility: 'hidden' } : null}
+        />
+      </ol>
+      {/* Diet selection */}
       <label>Select any diets your recipe is a part of:</label>
       <div className={style.diets}>
         <input
@@ -77,10 +96,11 @@ function CreateRecipe() {
         />
         <label>Gluten Free</label>
       </div>
-
+      {/* Custom recipe image through URL () */}
       {/* <label>URL of custom image:</label>
       <input type="url" name="image" onChange={handleChange} /> */}
-      <input type="submit" value="Upload" onClick={handleSubmit} />
+      <input type="submit" value="Upload" onClick={handleSubmit} />* fields are
+      required.
     </form>
   );
 }
