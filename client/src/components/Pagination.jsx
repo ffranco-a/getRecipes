@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import style from './moduleCSS/Pagination.module.css';
 import Recipe from './Recipe.jsx';
+import SearchBar from './SearchBar.jsx';
 import { getRecipes } from '../actions';
-import SearchBar from './SearchBar';
 
 function Pagination({ recipes, getRecipes }) {
   const [page, setPage] = useState(1);
@@ -14,9 +14,9 @@ function Pagination({ recipes, getRecipes }) {
     }
   }, [recipes.length, getRecipes]);
 
-  // useEffect(() => {
-  //   setPage(1);
-  // }, [recipes, setPage]);
+  useEffect(() => {
+    setPage(1);
+  }, [recipes, setPage]);
 
   const firstRecipe = (page - 1) * 9;
   const lastRecipe = page * 9;
