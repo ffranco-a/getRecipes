@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import style from './moduleCSS/CreateRecipe.module.css';
+import { connect } from 'react-redux';
+import { postRecipe } from '../actions';
 
-function CreateRecipe() {
+export default function CreateRecipe() {
   const [recipe, setRecipe] = useState({
     title: '',
     summary: '',
-    image:
-      'https://images.unsplash.com/photo-1506368249639-73a05d6f6488?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1868&q=80',
+    image: '',
   });
 
   const [errors, setErrors] = useState({});
@@ -69,8 +70,26 @@ function CreateRecipe() {
     setInstructions(newInstructions);
   };
 
+  const formRecipe = (recipe, instructions, diets) => {
+    let newRecipe = recipe;
+    if (newRecipe.image === '') {
+      newRecipe.image =
+        'https://images.unsplash.com/photo-1506368249639-73a05d6f6488?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1868&q=80';
+    }
+    let newRecipeDiets = [];
+    for (let d in diets) {
+      if (d) newRecipeDiets.push(d);
+    }
+    return {
+      ...newRecipe,
+      analyzedInstructions: instructions,
+      diets: newRecipeDiets,
+    };
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
+    postRecipe(formRecipe(recipe, instructions, diets));
   };
 
   return (
@@ -78,7 +97,7 @@ function CreateRecipe() {
       <label>Recipe title: {errors.title}</label>
       <input type="text" name="title" onChange={handleChange} required={true} />
       <span>summary: {errors.summary}</span>
-      <input
+      <textarea
         type="text"
         name="summary"
         onChange={handleChange}
@@ -128,12 +147,12 @@ function CreateRecipe() {
       </div>
 
       {/* Custom recipe image through URL () */}
-      {/* <label>URL of custom image:</label>
-      <input type="url" name="image" onChange={handleChange} /> */}
+      <label>URL of custom image:</label>
+      <input type="url" name="image" onChange={handleChange} />
 
       <input type="submit" value="Upload" onClick={handleSubmit} />
     </form>
   );
 }
 
-export default CreateRecipe;
+// export default connect(null, { postRecipe })(CreateRecipe);

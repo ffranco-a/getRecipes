@@ -1,18 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import style from './moduleCSS/Pagination.module.css';
 import Recipe from './Recipe.jsx';
-import SearchBar from './SearchBar.jsx';
-import { getRecipes } from '../actions';
+import style from './moduleCSS/Pagination.module.css';
 
-function Pagination({ recipes, getRecipes }) {
+function Pagination({ recipes }) {
   const [page, setPage] = useState(1);
-
-  useEffect(() => {
-    if (recipes.length === 0) {
-      getRecipes();
-    }
-  }, [recipes.length, getRecipes]);
 
   useEffect(() => {
     setPage(1);
@@ -46,7 +38,6 @@ function Pagination({ recipes, getRecipes }) {
 
   return (
     <div>
-      <SearchBar />
 
       {/* ↓ nueve recetas */}
       <div className={style.recipesContainer}>
@@ -90,4 +81,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getRecipes })(Pagination);
+export default connect(mapStateToProps)(Pagination);

@@ -36,6 +36,8 @@ function SearchBar({ getRecipesByName, order }) {
         <option value="title-descendent">Title Z-A</option>
         <option value="score-descendent">Best Score</option>
         <option value="score-ascendent">Score</option>
+        <option value="health-descendent">Best Health Score</option>
+        <option value="health-ascendent">Health Score</option>
       </select>
     </div>
   );

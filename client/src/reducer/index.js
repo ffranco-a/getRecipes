@@ -1,5 +1,3 @@
-// reducer
-
 import {
   GET_RECIPES,
   GET_RECIPE_BY_ID,
@@ -94,7 +92,7 @@ const rootReducer = {
     },
   ], */
 
-  /* recipes: [
+  /*recipes: [
     {
       "vegetarian": true,
       "vegan": true,
@@ -1765,6 +1763,10 @@ const reducer = (state = rootReducer, action) => {
           A = a.spoonacularScore;
           B = b.spoonacularScore;
         }
+        if (action.payload.includes('health')) {
+          A = a.healthScore;
+          B = b.healthScore;
+        }
         if (action.payload.includes('ascendent')) {
           if (A < B) return -1;
           if (A > B) return 1;
@@ -1780,7 +1782,7 @@ const reducer = (state = rootReducer, action) => {
         recipes: [...ordered],
       };
 
-    case FILTER: // COMPLETAR con diets.join().includes('dieta1' && 'dieta2');
+    case FILTER: // COMPLETAR con diets.join().includes('dieta1' && 'dieta2'); ?
       return { ...state };
 
     default:
