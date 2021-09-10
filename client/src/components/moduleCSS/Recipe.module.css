@@ -1,5 +1,6 @@
 .recipeCardContainer {
-  border: 2px solid black;
+  position: relative;
+  border: 1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,13 +16,15 @@
 }
 
 .recipeCardInfo {
-  margin: 1em 3em;
+  position: absolute;
+  left: 0;
+  right: 0;
   font-size: 1.1rem;
-  width: 100%;
   color: white;
+  text-shadow: #000 1px 1px 10px;
   text-align: center;
-  backdrop-filter: blur(2px);
-  background-color: #4442;
+  /* backdrop-filter: blur(3px); */
+  background-color: #4444;
 }
 
 .diets {

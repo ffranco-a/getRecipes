@@ -1,6 +1,12 @@
 // reducer
 
-import { GET_RECIPES, GET_RECIPE_BY_ID, GET_TYPES, ORDER } from '../actions/index.js';
+import {
+  GET_RECIPES,
+  GET_RECIPE_BY_ID,
+  GET_TYPES,
+  ORDER,
+  FILTER,
+} from '../actions/index.js';
 
 const rootReducer = {
   /*recipes: [
@@ -88,7 +94,7 @@ const rootReducer = {
     },
   ], */
 
-  recipes: [
+  /* recipes: [
     {
       "vegetarian": true,
       "vegan": true,
@@ -1719,12 +1725,11 @@ const rootReducer = {
       ],
       "spoonacularSourceUrl": "https://spoonacular.com/slow-cooker-beef-stew-715446"
     }
-  ],
+  ], */
 
-  // recipes: [],
+  recipes: [],
   details: {},
   diets: [],
-
   // favorites: [],
 };
 
@@ -1735,38 +1740,22 @@ const reducer = (state = rootReducer, action) => {
         ...state,
         recipes: [...action.payload],
       };
+
     case GET_RECIPE_BY_ID:
       return {
         ...state,
         details: { ...action.payload },
       };
+
     case GET_TYPES:
       return {
         ...state,
         diets: [...action.payload],
       };
-    // case ORDER_BY_NAME:
-    //   let ordered = state.recipes;
-    //   ordered.sort((a, b) => {
-    //     let titleA = a.title.toLowerCase();
-    //     let titleB = b.title.toLowerCase();
-    //     if (action.payload === 'alphabetic-ascendent') {
-    //       if (titleA < titleB) return -1;
-    //       if (titleA > titleB) return 1;
-    //     }
-    //     if (action.payload === 'alphabetic-descendent') {
-    //       if (titleA < titleB) return 1;
-    //       if (titleA > titleB) return -1;
-    //     }
-    //     return 0;
-    //   });
-    //   return {
-    //     ...state,
-    //     recipes: [...ordered],
-    //   };
+
     case ORDER:
       let ordered = state.recipes;
-      ordered.sort((a, b) => {
+      ordered.sort((a, b) => { // ← no sé qué tan buena práctica sea hacer este tipo de funciones en el reducer, pero estoy contento con la forma en que manejé los cuatro ordenamientos en un solo lugar
         let A, B;
         if (action.payload.includes('title')) {
           A = a.title.toLowerCase();
@@ -1790,6 +1779,10 @@ const reducer = (state = rootReducer, action) => {
         ...state,
         recipes: [...ordered],
       };
+
+    case FILTER: // COMPLETAR con diets.join().includes('dieta1' && 'dieta2');
+      return { ...state };
+
     default:
       return { ...state };
   }

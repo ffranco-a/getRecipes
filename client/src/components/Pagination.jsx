@@ -62,6 +62,7 @@ function Pagination({ recipes, getRecipes }) {
           );
         })}
       </div>
+
       {/* ↓ selector para el paginado */}
       <ul className={style.pagesList}>
         <li onClick={handlePrev}>←</li>
