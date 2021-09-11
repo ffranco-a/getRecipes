@@ -15,8 +15,10 @@ function Detail({ details, getRecipeById, match }) {
     <div>
       <h3>{details.title}</h3>
       <div dangerouslySetInnerHTML={{ __html: details.summary }} />
-      {details.spoonacularScore && <div>score: {details.spoonacularScore}</div>}
-      {details.healthScore && <div>health score: {details.healthScore}</div>}
+      {details.spoonacularScore && <div>Score: {details.spoonacularScore}</div>}
+      {details.healthScore && <div>Health score: {details.healthScore}</div>}
+
+      {/* Diets only shown if found any */}
       {details.diets && (
         <div>
           diets:
@@ -25,6 +27,23 @@ function Detail({ details, getRecipeById, match }) {
           })}
         </div>
       )}
+
+      {/* Ingredients only shown if found any */}
+      {details.ingredients && (
+        <div>
+          ingredients:
+          {details.ingredients.map(ingredient => {
+            return (
+              <div>
+                {ingredient.name}, {ingredient.measures.amount}{' '}
+                {ingredient.measures.unitLong}
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {/* Instructions only shown if found any */}
       {details.analyzedInstructions && (
         <div>
           instructions:

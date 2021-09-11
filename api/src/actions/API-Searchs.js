@@ -19,16 +19,17 @@ const apiGeneralSearch = () =>
     )
     .then(response => {
       let recipes = [];
-      for (var recipe of response.data.results) {  // ← un bucle `for...in` no me devolvía nada, leí la documentación y aparentemente era porque el objeto que axios me devuelve no tenía keys, sino directamente objetos en sí como los valores. Leí que el `for...of` era una alternativa, y me funciona perfecto por suerte ♥
+      for (var recipe of response.data.results) {
+        // ← un bucle `for...in` no me devolvía nada, leí la documentación y aparentemente era porque el objeto que axios me devuelve no tenía keys, sino directamente objetos en sí como los valores. Leí que el `for...of` era una alternativa, y me funciona perfecto por suerte ♥
         recipes = [
           ...recipes,
           {
             id: recipe.id,
             title: recipe.title,
-            summary: recipe.summary,
+            // summary: recipe.summary,
             spoonacularScore: recipe.spoonacularScore,
             healthScore: recipe.healthScore,
-            analyzedInstructions: recipe.analyzedInstructions,
+            // analyzedInstructions: recipe.analyzedInstructions,
             diets: recipe.diets,
             image: recipe.image,
           },
@@ -62,10 +63,10 @@ const apiSearchByName = name =>
           {
             id: recipe.id,
             title: recipe.title,
-            summary: recipe.summary,
+            // summary: recipe.summary,
             spoonacularScore: recipe.spoonacularScore,
             healthScore: recipe.healthScore,
-            analyzedInstructions: recipe.analyzedInstructions,
+            // analyzedInstructions: recipe.analyzedInstructions,
             diets: recipe.diets,
             image: recipe.image,
           },
@@ -75,7 +76,7 @@ const apiSearchByName = name =>
     })
     .catch(() => {
       throw new Error('Ocurrió un error en apiSearchByName');
-    });;
+    });
 
 ///////////////////////////////
 // BÚSQUEDA POR ID en la API
@@ -92,6 +93,9 @@ const apiSearchById = id =>
         summary: response.data.summary,
         spoonacularScore: response.data.spoonacularScore,
         healthScore: response.data.healthScore,
+        ingredients: response.data.extendedIngredients.map(ingredient => {
+          return { name: ingredient.name, measures: ingredient.measures.us };
+        }),
         analyzedInstructions: response.data.analyzedInstructions[0].steps,
         diets: response.data.diets,
         image: response.data.image,
