@@ -92,7 +92,7 @@ const apiSearchById = id =>
         summary: response.data.summary,
         spoonacularScore: response.data.spoonacularScore,
         healthScore: response.data.healthScore,
-        analyzedInstructions: response.data.analyzedInstructions,
+        analyzedInstructions: response.data.analyzedInstructions[0].steps,
         diets: response.data.diets,
         image: response.data.image,
       };
