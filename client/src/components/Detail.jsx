@@ -2,12 +2,27 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getRecipeById } from '../actions';
 
-function Detail({ details, getRecipeById, match}) {
+function Detail({ details, getRecipeById, match }) {
   useEffect(() => {
-    getRecipeById(match.params.id); // no está funcionando
+    getRecipeById(match.params.id);
   }, [getRecipeById, match.params.id]);
 
-  return <h3>Details of {details.title}</h3>;
+  return (
+    <div>
+      <h3>{details.title}</h3>
+      <div dangerouslySetInnerHTML={{__html: details.summary}} />
+      <div>score: {details.spoonacularScore}</div>
+      <div>health score: {details.healthScore}</div>
+      <div>diets: 
+        {details.diets.map((diet, index) => {
+          return (<li key={index}>
+            {diet}
+          </li>)
+        })}
+      </div>
+      <img src={details.image} alt='' />
+    </div>
+  );
 }
 
 const mapStateToProps = state => {

@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
 import style from './moduleCSS/CreateRecipe.module.css';
+import { getRecipes } from '../actions';
+import { connect } from 'react-redux';
 
 const axios = require('axios');
 
-export default function CreateRecipe() {
+function CreateRecipe({ getRecipes }) {
   const [recipe, setRecipe] = useState({
     title: '',
     summary: '',
     image: '',
-    diets: {
-      vegetarian: false,
-      vegan: false,
-      glutenFree: false,
-    }
   });
 
   const [errors, setErrors] = useState({});
@@ -77,16 +74,10 @@ export default function CreateRecipe() {
 
   const formRecipe = (recipe, instructions, diets) => {
     let newRecipe = { ...recipe };
-    console.log(recipe.image);
-    console.log(newRecipe.image);
     if (newRecipe.image === '') {
       newRecipe.image =
         'https://images.unsplash.com/photo-1506368249639-73a05d6f6488?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1868&q=80';
     }
-    // let newRecipeDiets = [];
-    // for (const [key, value] of Object.entries(diets)) {
-    //   if (value) newRecipeDiets.push(key);
-    // }
     return {
       ...newRecipe,
       ...diets,
@@ -96,41 +87,50 @@ export default function CreateRecipe() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    let newRecipe = formRecipe(recipe, instructions);
-    console.log(newRecipe);
-    axios.post('http://localhost:3001/recipe', newRecipe);
-    // postRecipe(formRecipe(recipe, instructions, diets));
+    if(recipe.title === '' || recipe.summary === '') {
+      alert('Recipe must have a title and a summary!');
+      return;
+    }
+    let newRecipe = formRecipe(recipe, instructions, diets);
+    axios.post('http://localhost:3001/recipe', newRecipe).then(() => {
+      getRecipes();
+    });
   };
 
   return (
     <form className={style.createRecipe}>
       <label>Recipe title: {errors.title}</label>
-      <input type="text" name="title" onChange={handleChange} required={true} />
+      <input type="text" name="title" onChange={handleChange} required />
       <span>summary: {errors.summary}</span>
       <textarea
         type="text"
         name="summary"
         onChange={handleChange}
-        required={true}
+        required
       />
 
       {/* ///////////////////////////////// */}
       {/* Dynamic step by step instructions */}
       {/* ///////////////////////////////// */}
-      <label>Step by step:</label>
+      <span>
+        Step by step: 
+        <button type="button" onClick={handleAddStep}>
+          add
+        </button>
+        <button
+          type="button"
+          onClick={handleRemoveLastStep}
+          style={instructions.length === 0 ? { visibility: 'hidden' } : null}
+        >
+          remove
+        </button>
+      </span>
       <ol className={style.instructions}>
         {instructions.map(i => (
           <li key={i.number} className={style.step}>
             <input name={i.number} onChange={handleInstructions}></input>
           </li>
         ))}
-        <input type="button" value="Add step" onClick={handleAddStep} />
-        <input
-          type="button"
-          value="Remove last step"
-          onClick={handleRemoveLastStep}
-          style={instructions.length === 0 ? { visibility: 'hidden' } : null}
-        />
       </ol>
 
       {/* ////////////// */}
@@ -156,11 +156,15 @@ export default function CreateRecipe() {
         <label>Gluten Free</label>
       </div>
 
+      {/* ////////////////////////////////// */}
       {/* Custom recipe image through URL () */}
+      {/* ////////////////////////////////// */}
       <label>URL of custom image:</label>
       <input type="url" name="image" onChange={handleChange} />
 
-      <input type="submit" value="Upload" onClick={handleSubmit} />
+      <input type="submit" value="Create!" onClick={handleSubmit} />
     </form>
   );
 }
+
+export default connect(null, { getRecipes })(CreateRecipe);
