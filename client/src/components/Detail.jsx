@@ -21,7 +21,7 @@ function Detail({ details, getRecipeById, match }) {
       {/* Diets only shown if found any */}
       {details.diets && (
         <div>
-          diets:
+          Diets:
           {details.diets.map((diet, index) => {
             return <li key={index}>{diet}</li>;
           })}
@@ -31,13 +31,13 @@ function Detail({ details, getRecipeById, match }) {
       {/* Ingredients only shown if found any */}
       {details.ingredients && (
         <div>
-          ingredients:
-          {details.ingredients.map(ingredient => {
+          Ingredients:
+          {details.ingredients.map((ingredient, index) => {
             return (
-              <div>
+              <li key={index}>
                 {ingredient.name}, {ingredient.measures.amount}{' '}
                 {ingredient.measures.unitLong}
-              </div>
+              </li>
             );
           })}
         </div>
@@ -46,7 +46,7 @@ function Detail({ details, getRecipeById, match }) {
       {/* Instructions only shown if found any */}
       {details.analyzedInstructions && (
         <div>
-          instructions:
+          Instructions:
           {details.analyzedInstructions.map(step => {
             return (
               <div key={step.number}>

@@ -80,14 +80,15 @@ function CreateRecipe({ getRecipes }) {
     }
     return {
       ...newRecipe,
-      ...diets,
+      diets: { ...diets },
       analyzedInstructions: instructions,
     };
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (recipe.title === '' || recipe.summary === '') {  // MODIFY!
+    if (recipe.title === '' || recipe.summary === '') {
+      // MODIFY!
       alert('Recipe must have a title and a summary!');
       return;
     }
@@ -108,7 +109,7 @@ function CreateRecipe({ getRecipes }) {
       {/* Dynamic step by step instructions */}
       {/* ///////////////////////////////// */}
       <span>
-        Step by step: 
+        Step by step:
         <button type="button" onClick={handleAddStep}>
           add
         </button>
@@ -133,22 +134,22 @@ function CreateRecipe({ getRecipes }) {
       {/* ////////////// */}
       <label>Select any diets your recipe is a part of:</label>
       <div className={style.diets}>
-        <input
-          type="checkbox"
-          name="diets"
-          id="vegetarian"
-          onChange={handleDiets}
-        />
-        <label>Vegetarian</label> <br />
-        <input type="checkbox" name="diets" id="vegan" onChange={handleDiets} />
-        <label>Vegan</label> <br />
-        <input
-          type="checkbox"
-          name="diets"
-          id="glutenFree"
-          onChange={handleDiets}
-        />
+        <input type="checkbox" id="glutenFree" onChange={handleDiets} />
         <label>Gluten Free</label>
+        <input type="checkbox" id="vegetarian" onChange={handleDiets} />
+        <label>Vegetarian</label>
+        <input type="checkbox" name="diets" id="vegan" onChange={handleDiets} />
+        <label>Vegan</label>
+        <input type="checkbox" id="ketogenic" onChange={handleDiets} />
+        <label>Ketogenic</label>
+        <input type="checkbox" id="pescetarian" onChange={handleDiets} />
+        <label>Pescetarian</label>
+        <input type="checkbox" id="paleo" onChange={handleDiets} />
+        <label>Paleo</label>
+        <input type="checkbox" id="primal" onChange={handleDiets} />
+        <label>Primal</label>
+        <input type="checkbox" id="whole30" onChange={handleDiets} />
+        <label>Whole30</label>
       </div>
 
       {/* ////////////////////////////////// */}

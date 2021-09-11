@@ -20,7 +20,8 @@ const dbGeneralSearch = async () => {
   for (var i = 0; i < recipes.length; i++) {
     response.push({
       ...recipes[i].dataValues,
-      diets: recipes[i].dataValues.diets.map(diet => diet.name.toLowerCase()),
+      // diets: recipes[i].dataValues.diets.map(diet => diet.name.toLowerCase()),
+      diets: recipes[i].dataValues.diets.map(diet => diet.name),
     });
   }
   return response;
@@ -42,7 +43,8 @@ const dbSearchByName = async name => {
   for (var i = 0; i < recipes.length; i++) {
     response.push({
       ...recipes[i].dataValues,
-      diets: recipes[i].dataValues.diets.map(diet => diet.name.toLowerCase()),
+      // diets: recipes[i].dataValues.diets.map(diet => diet.name.toLowerCase()),
+      diets: recipes[i].dataValues.diets.map(diet => diet.name),
     });
   }
   return response;
@@ -57,7 +59,8 @@ const dbSearchById = async id => {
   });
   let response = {
     ...recipe.dataValues,
-    diets: recipe.dataValues.diets.map(diet => diet.name.toLowerCase()),
+    // diets: recipe.dataValues.diets.map(diet => diet.name.toLowerCase()),
+    diets: recipe.dataValues.diets.map(diet => diet.name),
   };
   return response;
 };

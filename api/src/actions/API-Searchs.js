@@ -30,7 +30,9 @@ const apiGeneralSearch = () =>
             spoonacularScore: recipe.spoonacularScore,
             healthScore: recipe.healthScore,
             // analyzedInstructions: recipe.analyzedInstructions,
-            diets: recipe.diets,
+            diets: recipe.diets.map(
+              diet => diet.charAt(0).toUpperCase() + diet.slice(1)
+            ),
             image: recipe.image,
           },
         ];
@@ -67,7 +69,9 @@ const apiSearchByName = name =>
             spoonacularScore: recipe.spoonacularScore,
             healthScore: recipe.healthScore,
             // analyzedInstructions: recipe.analyzedInstructions,
-            diets: recipe.diets,
+            diets: recipe.diets.map(
+              diet => diet.charAt(0).toUpperCase() + diet.slice(1)
+            ),
             image: recipe.image,
           },
         ];
@@ -94,10 +98,13 @@ const apiSearchById = id =>
         spoonacularScore: response.data.spoonacularScore,
         healthScore: response.data.healthScore,
         ingredients: response.data.extendedIngredients.map(ingredient => {
-          return { name: ingredient.name, measures: ingredient.measures.us };
+          let name = ingredient.name.charAt(0).toUpperCase() + ingredient.name.slice(1);
+          return { name, measures: ingredient.measures.us };
         }),
         analyzedInstructions: response.data.analyzedInstructions[0].steps,
-        diets: response.data.diets,
+        diets: response.data.diets.map(
+          diet => diet.charAt(0).toUpperCase() + diet.slice(1)
+        ),
         image: response.data.image,
       };
     })

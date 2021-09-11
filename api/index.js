@@ -38,17 +38,17 @@ conn.sync({ force: true }).then(() => {
         'No ingredients may contain meat or meat by-products, such as bones or gelatin, nor may they contain eggs, dairy, or honey.',
     });
     const dietGlutenFree = Diet.create({
-      name: 'Gluten Free',
+      name: 'Gluten free',
       description:
         'Eliminating gluten means avoiding wheat, barley, rye, and other gluten-containing grains and foods made from them (or that may have been cross contaminated).',
     });
     const dietLactoVegetarian = Diet.create({
-      name: 'Lacto-Vegetarian',
+      name: 'Lacto vegetarian',
       description:
       'All ingredients must be vegetarian and none of the ingredients can be or contain egg.',
     });
     const dietOvoVegetarian = Diet.create({
-      name: 'Ovo-Vegetarian',
+      name: 'Ovo vegetarian',
       description:
       'All ingredients must be vegetarian and none of the ingredients can be or contain dairy.',
     });
@@ -78,52 +78,6 @@ conn.sync({ force: true }).then(() => {
         'Allowed ingredients include meat, fish/seafood, eggs, vegetables, fresh fruit, coconut oil, olive oil, small amounts of dried fruit and nuts/seeds. Ingredients not allowed include added sweeteners (natural and artificial, except small amounts of fruit juice), dairy (except clarified butter or ghee), alcohol, grains, legumes (except green beans, sugar snap peas, and snow peas), and food additives, such as carrageenan, MSG, and sulfites.',
     });
 
-    // ↓ precargo algunas recetas de prueba para ver si funciona (EDIT: sí funciona uwu )
-    // const recipe1 = await Recipe.create({
-    //   title: 'Budín de naranja',
-    //   summary: 'Esponjoso bizcochuelo dulce para la merienda o el desayuno',
-    //   spoonacularScore: 4,
-    //   healthScore: 2,
-    //   analyzedInstructions: [],
-    // });
-    // recipe1.addDiet(1);
-
-    // const recipe2 = await Recipe.create({
-    //   title: 'Tarta Cabsha',
-    //   summary:
-    //     'Tarta dulce con relleno de dulce de leche y cobertura de chocolate',
-    //   spoonacularScore: 7,
-    //   healthScore: 1,
-    //   analyzedInstructions: [],
-    // });
-    // recipe2.addDiet(1);
-
-    // const recipe3 = await Recipe.create({
-    //   title: 'Pastas primavera',
-    //   summary: 'Fideos preparados con verduras y crema',
-    //   spoonacularScore: 6,
-    //   healthScore: 6,
-    //   analyzedInstructions: [],
-    // });
-    // recipe3.addDiet(1);
-
-    // const recipe4 = Recipe.create({
-    //   title: 'Empanadas de osobuco',
-    //   summary: 'Empanadas argentinas rellenas de carne',
-    //   spoonacularScore: 5,
-    //   healthScore: 4,
-    //   analyzedInstructions: [],
-    // });
-
-    // const recipe5 = await Recipe.create({
-    //   title: 'Pan de carne',
-    //   summary: 'Carne molida cocinada en molde',
-    //   spoonacularScore: 4,
-    //   healthScore: 3,
-    //   analyzedInstructions: [],
-    // });
-    // recipe5.addDiet(3);
-
     Promise.all([
       dietGlutenFree,
       dietKetogenic,
@@ -135,11 +89,6 @@ conn.sync({ force: true }).then(() => {
       dietPaleo,
       dietPrimal,
       dietWhole30,
-      // recipe1,
-      // recipe2,
-      // recipe3,
-      // recipe4,
-      // recipe5,
-    ]).then(r => console.log('Dietas y recetas cargadas!'));
+    ]).then(r => console.log('¡Servidor arriba y dietas cargadas!'));
   });
 });
