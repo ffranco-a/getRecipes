@@ -56,10 +56,10 @@ const dbSearchById = async id => {
   let recipe = await Recipe.findByPk(id, {
     include: INCLUDE,
   });
-  let response = [{
+  let response = {
     ...recipe.dataValues,
     diets: recipe.dataValues.diets.map(diet => diet.name.toLowerCase()),
-  }];
+  };
   return response;
 };
 

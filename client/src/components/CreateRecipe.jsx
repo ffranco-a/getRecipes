@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import style from './moduleCSS/CreateRecipe.module.css';
-import { connect } from 'react-redux';
-import { postRecipe } from '../actions';
+
+const axios = require('axios');
 
 export default function CreateRecipe() {
   const [recipe, setRecipe] = useState({
     title: '',
     summary: '',
     image: '',
+    diets: {
+      vegetarian: false,
+      vegan: false,
+      glutenFree: false,
+    }
   });
 
   const [errors, setErrors] = useState({});
@@ -15,7 +20,7 @@ export default function CreateRecipe() {
   const [diets, setDiets] = useState({
     vegetarian: false,
     vegan: false,
-    'gluten free': false,
+    glutenFree: false,
   });
 
   const [instructions, setInstructions] = useState([]);
@@ -71,25 +76,30 @@ export default function CreateRecipe() {
   };
 
   const formRecipe = (recipe, instructions, diets) => {
-    let newRecipe = recipe;
+    let newRecipe = { ...recipe };
+    console.log(recipe.image);
+    console.log(newRecipe.image);
     if (newRecipe.image === '') {
       newRecipe.image =
         'https://images.unsplash.com/photo-1506368249639-73a05d6f6488?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1868&q=80';
     }
-    let newRecipeDiets = [];
-    for (let d in diets) {
-      if (d) newRecipeDiets.push(d);
-    }
+    // let newRecipeDiets = [];
+    // for (const [key, value] of Object.entries(diets)) {
+    //   if (value) newRecipeDiets.push(key);
+    // }
     return {
       ...newRecipe,
+      ...diets,
       analyzedInstructions: instructions,
-      diets: newRecipeDiets,
     };
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    postRecipe(formRecipe(recipe, instructions, diets));
+    let newRecipe = formRecipe(recipe, instructions);
+    console.log(newRecipe);
+    axios.post('http://localhost:3001/recipe', newRecipe);
+    // postRecipe(formRecipe(recipe, instructions, diets));
   };
 
   return (
@@ -140,7 +150,7 @@ export default function CreateRecipe() {
         <input
           type="checkbox"
           name="diets"
-          id="gluten free"
+          id="glutenFree"
           onChange={handleDiets}
         />
         <label>Gluten Free</label>
@@ -154,5 +164,3 @@ export default function CreateRecipe() {
     </form>
   );
 }
-
-// export default connect(null, { postRecipe })(CreateRecipe);

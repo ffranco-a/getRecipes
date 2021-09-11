@@ -56,8 +56,3 @@ export function filter(diet) {
     dispatch({ type: FILTER, payload: diet });
   };
 }
-
-export function postRecipe(recipe) {
-  // console.log(recipe);
-  axios.post(`${LINK}/recipe`, recipe);
-}
