@@ -87,7 +87,7 @@ function CreateRecipe({ getRecipes }) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    if(recipe.title === '' || recipe.summary === '') {
+    if (recipe.title === '' || recipe.summary === '') {  // MODIFY!
       alert('Recipe must have a title and a summary!');
       return;
     }
@@ -102,12 +102,7 @@ function CreateRecipe({ getRecipes }) {
       <label>Recipe title: {errors.title}</label>
       <input type="text" name="title" onChange={handleChange} required />
       <span>summary: {errors.summary}</span>
-      <textarea
-        type="text"
-        name="summary"
-        onChange={handleChange}
-        required
-      />
+      <textarea type="text" name="summary" onChange={handleChange} required />
 
       {/* ///////////////////////////////// */}
       {/* Dynamic step by step instructions */}
