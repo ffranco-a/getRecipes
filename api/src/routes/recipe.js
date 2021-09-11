@@ -5,7 +5,7 @@ const recipe = Router();
 
 recipe.post('/', async (req, res) => {
   // res.send('POST /recipe is working!');
-  const { title, summary, spoonacularScore, healthScore, analyzedInstructions, diets, image } = req.body;
+  const { title, summary, spoonacularScore, healthScore, analyzedInstructions, ingredients, diets, image } = req.body;
   if (!title || !summary)
     return res.status(500).json({
       error: '¡Las recetas sí o sí deben tener un nombre y una descripción!',
@@ -16,6 +16,7 @@ recipe.post('/', async (req, res) => {
     spoonacularScore,
     healthScore,
     analyzedInstructions,
+    ingredients,
     image,
   });
   if (diets.vegetarian) newRecipe.addDiet(1);

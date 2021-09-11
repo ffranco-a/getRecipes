@@ -6,26 +6,31 @@ import { connect } from 'react-redux';
 const axios = require('axios');
 
 function CreateRecipe({ getRecipes }) {
+  const [errors, setErrors] = useState({});
   const [recipe, setRecipe] = useState({
     title: '',
     summary: '',
     image: '',
   });
-
-  const [errors, setErrors] = useState({});
-
   const [diets, setDiets] = useState({
     vegetarian: false,
     vegan: false,
     glutenFree: false,
   });
-
   const [instructions, setInstructions] = useState([]);
   const stepModel = {
     number: instructions.length + 1,
     step: '',
   };
+  const [ingredients, setIngredients] = useState([]);
+  const ingredientModel = {
+    name: '',
+    amount: '',
+    unitLong: '',
+  };
 
+  /////////////////////////////////////////////////////////////
+  // error validation (recipes must have title and summaries)
   const validate = input => {
     let errors = {};
     if (!input.title) {
@@ -37,6 +42,8 @@ function CreateRecipe({ getRecipes }) {
     return errors;
   };
 
+  ////////////////////////////////////////////
+  //  title and summary set and validation  //
   const handleChange = e => {
     setRecipe({
       ...recipe,
@@ -50,13 +57,32 @@ function CreateRecipe({ getRecipes }) {
     );
   };
 
-  const handleDiets = e => {
-    setDiets({
-      ...diets,
-      [e.target.id]: e.target.checked,
-    });
+  /////////////////////////////////
+  //  three INGREDIENT handlers  //
+  const handleAddIngredient = () => {
+    let id;
+    ingredients.length === 0
+      ? (id = 0)
+      : (id = ingredients[ingredients.length - 1].id + 1);
+    setIngredients([...ingredients, { ...ingredientModel, id }]);
   };
 
+  const handleRemoveIngredient = e => {
+    let newIngredients = [...ingredients];
+    newIngredients = newIngredients.filter(
+      ingredient => ingredients.indexOf(ingredient) !== parseInt(e.target.id)
+    );
+    setIngredients(newIngredients);
+  };
+
+  const handleIngredients = e => {
+    let newIngredients = [...ingredients];
+    newIngredients[e.target.id][e.target.name] = e.target.value;
+    setIngredients(newIngredients);
+  };
+
+  ///////////////////////////////////
+  //  three INSTRUCTIONS handlers  //
   const handleAddStep = () => {
     setInstructions([...instructions, { ...stepModel }]);
   };
@@ -72,19 +98,44 @@ function CreateRecipe({ getRecipes }) {
     setInstructions(newInstructions);
   };
 
+  ////////////////////
+  //  diet handler  //
+  const handleDiets = e => {
+    setDiets({
+      ...diets,
+      [e.target.id]: e.target.checked,
+    });
+  };
+
+  ////////////////////
+  //  before posting, I need to unify the 4 states: recipe, ingredients, instructions and diets. Final checks (custom image? ingredients quantities?)
   const formRecipe = (recipe, instructions, diets) => {
     let newRecipe = { ...recipe };
     if (newRecipe.image === '') {
       newRecipe.image =
         'https://images.unsplash.com/photo-1506368249639-73a05d6f6488?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1868&q=80';
     }
+    let newIngredients = ingredients
+      .filter(ingredient => ingredient.name !== '')
+      .map(ingredient => {
+        return {
+          name: ingredient.name,
+          measures: {
+            amount: ingredient.amount === 0 ? null : ingredient.amount,
+            unitLong: ingredient.unitLong,
+          },
+        };
+      });
     return {
       ...newRecipe,
       diets: { ...diets },
+      ingredients: [...newIngredients],
       analyzedInstructions: instructions,
     };
   };
 
+  ///////////////////////////
+  //  post recipe handler  //
   const handleSubmit = e => {
     e.preventDefault();
     if (recipe.title === '' || recipe.summary === '') {
@@ -98,6 +149,9 @@ function CreateRecipe({ getRecipes }) {
     });
   };
 
+  //////////////////////////////
+  ////  FINALLY: RENDERING  ////
+  ////
   return (
     <form className={style.createRecipe}>
       <label>Recipe title: {errors.title}</label>
@@ -105,20 +159,58 @@ function CreateRecipe({ getRecipes }) {
       <span>summary: {errors.summary}</span>
       <textarea type="text" name="summary" onChange={handleChange} required />
 
+      {/* //////////////////////// */}
+      {/* Dynamic ingredient input */}
+      {/* //////////////////////// */}
+      <span>Ingredients:</span>
+      <ul>
+        {ingredients.map((ingredient, index) => (
+          <li key={index}>
+            <input
+              type="text"
+              name="name"
+              value={ingredient.name}
+              id={index}
+              onChange={handleIngredients}
+            ></input>
+            <input
+              type="number"
+              name="amount"
+              value={ingredient.amount}
+              id={index}
+              onChange={handleIngredients}
+            ></input>
+            <input
+              type="text"
+              name="unitLong"
+              value={ingredient.unitLong}
+              id={index}
+              onChange={handleIngredients}
+            ></input>
+            <button type="button" id={index} onClick={handleRemoveIngredient}>
+              -
+            </button>
+          </li>
+        ))}
+        <button type="button" onClick={handleAddIngredient}>
+          +
+        </button>
+      </ul>
+
       {/* ///////////////////////////////// */}
       {/* Dynamic step by step instructions */}
       {/* ///////////////////////////////// */}
       <span>
         Step by step:
         <button type="button" onClick={handleAddStep}>
-          add
+          +
         </button>
         <button
           type="button"
           onClick={handleRemoveLastStep}
           style={instructions.length === 0 ? { visibility: 'hidden' } : null}
         >
-          remove
+          -
         </button>
       </span>
       <ol className={style.instructions}>
