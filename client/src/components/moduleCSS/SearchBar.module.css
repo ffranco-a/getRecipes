@@ -1,8 +1,9 @@
 .searchBarContainer {
   margin-top: 30px;
-  display: flex;
+  text-align: center;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
 
 .searchBar {

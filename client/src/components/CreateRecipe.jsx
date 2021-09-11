@@ -134,22 +134,38 @@ function CreateRecipe({ getRecipes }) {
       {/* ////////////// */}
       <label>Select any diets your recipe is a part of:</label>
       <div className={style.diets}>
-        <input type="checkbox" id="glutenFree" onChange={handleDiets} />
-        <label>Gluten Free</label>
-        <input type="checkbox" id="vegetarian" onChange={handleDiets} />
-        <label>Vegetarian</label>
-        <input type="checkbox" name="diets" id="vegan" onChange={handleDiets} />
-        <label>Vegan</label>
-        <input type="checkbox" id="ketogenic" onChange={handleDiets} />
-        <label>Ketogenic</label>
-        <input type="checkbox" id="pescetarian" onChange={handleDiets} />
-        <label>Pescetarian</label>
-        <input type="checkbox" id="paleo" onChange={handleDiets} />
-        <label>Paleo</label>
-        <input type="checkbox" id="primal" onChange={handleDiets} />
-        <label>Primal</label>
-        <input type="checkbox" id="whole30" onChange={handleDiets} />
-        <label>Whole30</label>
+        <label for="glutenFree">
+          <input type="checkbox" id="glutenFree" onChange={handleDiets} />
+          Gluten Free
+        </label>
+        <label for="vegetarian">
+          <input type="checkbox" id="vegetarian" onChange={handleDiets} />
+          Vegetarian
+        </label>
+        <label for="vegan">
+          <input type="checkbox" id="vegan" onChange={handleDiets} />
+          Vegan
+        </label>
+        <label for="ketogenic">
+          <input type="checkbox" id="ketogenic" onChange={handleDiets} />
+          Ketogenic
+        </label>
+        <label for="pescetarian">
+          <input type="checkbox" id="pescetarian" onChange={handleDiets} />
+          Pescetarian
+        </label>
+        <label for="paleo">
+          <input type="checkbox" id="paleo" onChange={handleDiets} />
+          Paleo
+        </label>
+        <label for="primal">
+          <input type="checkbox" id="primal" onChange={handleDiets} />
+          Primal
+        </label>
+        <label for="whole30">
+          <input type="checkbox" id="whole30" onChange={handleDiets} />
+          Whole30
+        </label>
       </div>
 
       {/* ////////////////////////////////// */}

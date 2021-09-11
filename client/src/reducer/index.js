@@ -1725,6 +1725,7 @@ const rootReducer = {
     }
   ], */
 
+  allRecipes: [],
   recipes: [],
   details: {},
   diets: [],
@@ -1737,6 +1738,7 @@ const reducer = (state = rootReducer, action) => {
       return {
         ...state,
         recipes: [...action.payload],
+        allRecipes: [...action.payload],
       };
 
     case GET_RECIPE_BY_ID:
@@ -1782,8 +1784,21 @@ const reducer = (state = rootReducer, action) => {
         recipes: [...ordered],
       };
 
-    case FILTER: // COMPLETAR con diets.join().includes('dieta1' && 'dieta2'); ?
-      return { ...state };
+    case FILTER:
+      if (action.payload.length === 0) {
+        return {
+          ...state,
+          recipes: [...state.allRecipes],
+        };
+      }
+      let filtered = [...state.allRecipes];
+      for (let i = 0; i < action.payload.length; i++) {
+        filtered = filtered.filter(recipe => recipe.diets.join('').toLowerCase().includes(action.payload[i]));
+      }
+      return {
+        ...state,
+        recipes: [...filtered],
+      };
 
     default:
       return { ...state };

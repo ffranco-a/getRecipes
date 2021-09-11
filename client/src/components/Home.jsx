@@ -4,12 +4,12 @@ import { getRecipes } from '../actions';
 import Pagination from './Pagination.jsx';
 import SearchBar from './SearchBar.jsx';
 
-function Home({ recipes, getRecipes }) {
+function Home({ allRecipes, getRecipes }) {
   useEffect(() => {
-    if (recipes.length === 0) {
+    if (allRecipes.length === 0) {
       getRecipes();
     }
-  }, [recipes.length, getRecipes]);
+  }, [allRecipes.length, getRecipes]);
 
   return (
     <div>
@@ -21,7 +21,7 @@ function Home({ recipes, getRecipes }) {
 
 const mapStateToProps = state => {
   return {
-    recipes: state.recipes,
+    allRecipes: state.allRecipes,
   };
 };
 

@@ -51,8 +51,8 @@ export function order(order) {
   };
 }
 
-export function filter(diet) {
+export function filter(diets) {
   return function (dispatch) {
-    dispatch({ type: FILTER, payload: diet });
+    dispatch({ type: FILTER, payload: diets });
   };
 }
