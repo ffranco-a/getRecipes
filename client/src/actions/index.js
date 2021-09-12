@@ -5,6 +5,8 @@ export const GET_RECIPE_BY_ID = 'GET_RECIPES_BY_ID';
 export const GET_TYPES = 'GET_TYPES';
 export const ORDER = 'ORDER';
 export const FILTER = 'FILTER';
+export const ADD_FAVORITE = 'ADD_FAVORITE';
+export const REMOVE_FAVORITE = 'REMOVE_FAVORITE';
 
 const LINK = 'http://localhost:3001';
 
@@ -54,5 +56,17 @@ export function order(order) {
 export function filter(diets) {
   return function (dispatch) {
     dispatch({ type: FILTER, payload: diets });
+  };
+}
+
+export function addFavorite(recipe) {
+  return function (dispatch) {
+    dispatch({ type: ADD_FAVORITE, payload: recipe });
+  };
+}
+
+export function removeFavorite(id) {
+  return function (dispatch) {
+    dispatch({ type: REMOVE_FAVORITE, payload: id });
   };
 }

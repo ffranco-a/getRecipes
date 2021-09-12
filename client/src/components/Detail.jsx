@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getRecipeById } from '../actions';
+import { getRecipeById, addFavorite } from '../actions';
 import style from './moduleCSS/Details.module.css';
 
-function Detail({ details, getRecipeById, match }) {
+function Detail({ details, getRecipeById, match, addFavorite }) {
   useEffect(() => {
     getRecipeById(match.params.id);
   }, [getRecipeById, match.params.id]);
 
-  // if (!details) {
-  //   return <div>Loading...</div>;
-  // }
+  const handleAddFavorite = () => {
+    addFavorite(details);
+  }
 
   return (
     <div
@@ -18,7 +18,7 @@ function Detail({ details, getRecipeById, match }) {
       style={{ backgroundImage: `url(${details.image})` }}
     >
       <div className={style.detailsInfo}>
-        <h3>{details.title}</h3>
+        <h3>{details.title} <button onClick={handleAddFavorite}>Add to Favs</button></h3>
         <div dangerouslySetInnerHTML={{ __html: details.summary }} />
         {details.spoonacularScore && (
           <div>Score: {details.spoonacularScore}</div>
@@ -75,4 +75,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getRecipeById })(Detail);
+export default connect(mapStateToProps, { getRecipeById, addFavorite })(Detail);

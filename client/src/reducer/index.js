@@ -4,6 +4,8 @@ import {
   GET_TYPES,
   ORDER,
   FILTER,
+  ADD_FAVORITE,
+  REMOVE_FAVORITE,
 } from '../actions/index.js';
 
 const rootReducer = {
@@ -1729,7 +1731,7 @@ const rootReducer = {
   recipes: [],
   details: {},
   diets: [],
-  // favorites: [],
+  favorites: [],
 };
 
 const reducer = (state = rootReducer, action) => {
@@ -1755,7 +1757,8 @@ const reducer = (state = rootReducer, action) => {
 
     case ORDER:
       let ordered = state.recipes;
-      ordered.sort((a, b) => { // ← no sé qué tan buena práctica sea hacer este tipo de funciones en el reducer, pero estoy contento con la forma en que manejé los cuatro ordenamientos en un solo lugar
+      ordered.sort((a, b) => {
+        // ← no sé qué tan buena práctica sea hacer este tipo de funciones en el reducer, pero estoy contento con la forma en que manejé los cuatro ordenamientos en un solo lugar
         let A, B;
         if (action.payload.includes('title')) {
           A = a.title.toLowerCase();
@@ -1793,11 +1796,32 @@ const reducer = (state = rootReducer, action) => {
       }
       let filtered = [...state.allRecipes];
       for (let i = 0; i < action.payload.length; i++) {
-        filtered = filtered.filter(recipe => recipe.diets.join('').toLowerCase().includes(action.payload[i]));
+        filtered = filtered.filter(recipe =>
+          recipe.diets.join('').toLowerCase().includes(action.payload[i])
+        );
       }
       return {
         ...state,
         recipes: [...filtered],
+      };
+
+    case ADD_FAVORITE:
+      let newFavorite = {
+        ...action.payload,
+        favorite: true,
+      };
+      return {
+        ...state,
+        favorites: [...state.favorites, { ...newFavorite }],
+      };
+
+    case REMOVE_FAVORITE:
+      let filterFavs = state.favorites.filter(
+        recipe => recipe.id !== action.payload
+      );
+      return {
+        ...state,
+        favorites: [...filterFavs],
       };
 
     default:

@@ -5,7 +5,7 @@ import Pagination from './Pagination.jsx';
 import SearchBar from './SearchBar.jsx';
 import style from './moduleCSS/Home.module.css';
 
-function Home({ allRecipes, getRecipes }) {
+function Home({ allRecipes, recipes, getRecipes }) {
   useEffect(() => {
     if (allRecipes.length === 0) {
       getRecipes();
@@ -15,7 +15,7 @@ function Home({ allRecipes, getRecipes }) {
   return (
     <div className={style.home}>
       <SearchBar />
-      <Pagination />
+      <Pagination recipes={recipes} />
     </div>
   );
 }
@@ -23,6 +23,7 @@ function Home({ allRecipes, getRecipes }) {
 const mapStateToProps = state => {
   return {
     allRecipes: state.allRecipes,
+    recipes: state.recipes,
   };
 };
 

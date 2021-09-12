@@ -1,6 +1,5 @@
 .recipeCardContainer {
   position: relative;
-  /* border: 1px solid black; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,4 +46,11 @@
 .diets {
   font-size: 15px;
   overflow-y: hidden;
+}
+
+.removeFromFavs {
+  z-index: 1;
+  position: absolute;
+  top: 3px;
+  right: 3px;
 }

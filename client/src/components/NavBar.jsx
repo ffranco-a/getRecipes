@@ -9,6 +9,7 @@ function NavBar() {
       <NavLink to="/home" activeClassName={style.active}>Home</NavLink>
       <NavLink to="/create" activeClassName={style.active}>Create</NavLink>
       <NavLink to="/diets" activeClassName={style.active}>Diets</NavLink>
+      <NavLink to="/favorites" activeClassName={style.active}>Favorites</NavLink>
     </div>
   );
 }

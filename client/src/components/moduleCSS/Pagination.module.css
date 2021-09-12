@@ -14,18 +14,23 @@
 }
 
 .pagesList li {
+  font-weight: bold;
+  color: white;
   padding: 5px;
   cursor: pointer;
   border-radius: 99px;
   width: 20px;
   text-align: center;
+  transition: background-color 0.5s, text-shadow 0.3s;
 }
 
 .pagesList li:hover {
-  background-color: #4441;
+  background-color: #4444;
+  text-shadow: #000 1px 1px 15px;
 }
 
 /* ↓ estilo para el botón activo de la lista de páginas*/
 .pagesList li.active {
-  background-color: #6664;
+  background-color: #0004;
+  transition: background-color 0.5s, text-shadow 0.3s;
 }

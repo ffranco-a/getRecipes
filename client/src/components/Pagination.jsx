@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import Recipe from './Recipe.jsx';
 import style from './moduleCSS/Pagination.module.css';
 
-function Pagination({ recipes }) {
+export default function Pagination({ recipes }) {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
@@ -49,6 +49,7 @@ function Pagination({ recipes }) {
               title={recipe.title}
               image={recipe.image}
               diets={recipe.diets}
+              favorite={recipe.favorite}
             />
           );
         })}
@@ -75,10 +76,10 @@ function Pagination({ recipes }) {
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    recipes: state.recipes,
-  };
-};
+// const mapStateToProps = state => {
+//   return {
+//     recipes: state.recipes,
+//   };
+// };
 
-export default connect(mapStateToProps)(Pagination);
+// export default connect(mapStateToProps)(Pagination);
