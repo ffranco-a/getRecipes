@@ -49,6 +49,8 @@ export default function Pagination({ recipes }) {
               title={recipe.title}
               image={recipe.image}
               diets={recipe.diets}
+              score={recipe.spoonacularScore}
+              healthScore={recipe.healthScore}
               favorite={recipe.favorite}
             />
           );

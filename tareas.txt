@@ -1,23 +1,30 @@
+
+TAREAS PENDIENTES:
+
+ERROR CODES: revisar los números, y revisar qué se envía al front
+Tests!
+revisar Favorite list (no poder agregar una receta dos veces a favs.)
+
+buscar las sitios de comida para inspiracion
+
+__________________
+------------------
+tareas terminadas:
+OK manejar los tipos de recetas en mi db (recipe.diets.map(d => d.name))
+OK POST recipe: revisar el errorhandler, probablemente deba ser en el formulario controlado dle front nomás
+OK Agregar imagen!
+OK Recipe.js: Definir qué hago con el ID de las recetas !!!!!!!!!!!!!!!!!!!!!!!!!! LISTO.
+OK GET Routes: incorporar el tipo de receta en cada resultado (usando la tabla intermedia Recipe_Diet)
+
+__________
+----------
 consultas:
 (ok) README línea 69: API de spoonacular tiene solicitudes limitadas, ¿cómo afecta eso a nuestro desempeño? -- a la 21hs se resetean los 150 puntos. Se pueden usar más de una APIKEY, con la máquina de mails descartables
 (ok) README línea 73: ¿cómo uso mis dos requests disponibles? ¿cómo los integro, los tendré que agregar a mi db así ya "quedan descargados/almacenados"?
 (ok) README línea 120: `formulario __controlado__` ¿es un form con hooks que validan la info en el momento que un usuario interactua con ellos?
 (ok) README línea 146: ¿cómo interactuan las dos bases de datos? ¿cómo las diferencio? -- ¿desde el frontend genero distintos urls para cada una? 
 
-
-todos:
-OK manejar los tipos de recetas en mi db (recipe.diets.map(d => d.name))
-POST recipe: revisar el errorhandler, probablemente deba ser en el formulario controlado dle front nomás
-ERROR CODES: revisar los números, y revisar qué se envía al front
-Agregar imagen!
-Tests!
-
-OK Recipe.js: Definir qué hago con el ID de las recetas !!!!!!!!!!!!!!!!!!!!!!!!!! LISTO.
-OK GET Routes: incorporar el tipo de receta en cada resultado (usando la tabla intermedia Recipe_Diet)
-
-
-buscar las sitios de comida para inspiracion
-
+_______________________________________________________________
 ---------------------------------------------------------------
 ---------------------------  PASOS  ---------------------------
 
@@ -43,7 +50,7 @@ OK * Crear en el backend el CRUD (Create, Read, Update, Delete) de lo necesario 
 
 -- Etapa III
 OK *Revisar con Postman que todas las rutas funcionen correctamente
-*Verificar en la base de datos que se estén persistiendo los datos de forma correctamente
+OK? *Verificar en la base de datos que se estén persistiendo los datos de forma correctamente
 OK *IMPORTANTE: Revisar la tabla intermedia del muchos a muchos
 *OJO!: Acuerdense que si no sacan el force: true del index.js de API les va a borrar los datos cada vez que se reinicie el servidor
 
@@ -63,9 +70,9 @@ OK Implementar el reducer y las actions para que inicialmente traiga los primero
 OK *Acción en redux de búsqueda que traiga del back-end el elemento buscado por su nombre o equivalente
 OK *Paginado (pueden usarse queries para hacer el paginado desde el back-end o filtrar directamente desde el front)
 OK *IMPORTANTE: NO! usar el paginado de la API externa
-*Filtrado: pueden realizarlo desdel el backend o el frontend (Al menos uno debe estar desde el frontend)
+OK *Filtrado: pueden realizarlo desdel el backend o el frontend (Al menos uno debe estar desde el frontend)
 OK *NO pueden utilizar el filtrado de la API externa
-*Botones de orden y action asociada
+OK *Botones de orden y action asociada
 
 -- Etapa VI
 *Página de detalle

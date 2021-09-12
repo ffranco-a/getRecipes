@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import style from './moduleCSS/Recipe.module.css';
 import { removeFavorite } from '../actions';
 
-function Recipe({ title, image, diets, id, favorite, removeFavorite }) {
+function Recipe({ title, image, diets, id, score, healthScore, favorite, removeFavorite }) {
   const handleRemoveFav = () => {
     removeFavorite(id);
   };
@@ -14,15 +14,27 @@ function Recipe({ title, image, diets, id, favorite, removeFavorite }) {
       className={style.recipeCardContainer}
       style={{ backgroundImage: `url(${image})` }}
     >
-      {favorite && <button onClick={handleRemoveFav} className={style.removeFromFavs} >Remove from fav</button>}
+      {favorite && (
+        <button onClick={handleRemoveFav} className={style.removeFromFavs}>
+          Remove from fav
+        </button>
+      )}
       <Link to={`/recipe/${id}`} className={style.container}>
         <div className={style.recipeCardInfo}>
           <h3>{title}</h3>
-          <div className={style.diets}>
-            {diets.map((diet, index) => (
-              <div key={index}>{diet}</div>
-            ))}
+          <div className={style.scores}>
+            <span>score: {score}</span>
+            <span>healthScore: {healthScore}</span>
           </div>
+          {diets.length > 0 && 
+            <div className={style.diets}>
+              {diets.map((diet, index) => (
+                <div key={index} className={style.diet}>
+                  {diet}
+                </div>
+              ))}
+            </div>
+          }
         </div>
       </Link>
     </div>

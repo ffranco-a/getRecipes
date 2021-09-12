@@ -9,7 +9,8 @@ import {
 } from '../actions/index.js';
 
 const rootReducer = {
-  /*recipes: [
+  /*
+  recipes: [
     {
       id: 'f6e5a7d1-a786-4bb9-8160-dfc29f58c60c',
       title: 'Budín de naranja',
@@ -92,9 +93,11 @@ const rootReducer = {
       updatedAt: '2021-09-03T16:22:08.226Z',
       diets: [],
     },
-  ], */
+  ],
+  */
 
-  /*recipes: [
+  /*
+  recipes: [
     {
       "vegetarian": true,
       "vegan": true,
@@ -1757,8 +1760,7 @@ const reducer = (state = rootReducer, action) => {
 
     case ORDER:
       let ordered = state.recipes;
-      ordered.sort((a, b) => {
-        // ← no sé qué tan buena práctica sea hacer este tipo de funciones en el reducer, pero estoy contento con la forma en que manejé los cuatro ordenamientos en un solo lugar
+      ordered.sort((a, b) => { // ← no sé qué tan buena práctica sea hacer este tipo de funciones en el reducer, pero estoy contento con la forma en que manejé los cuatro ordenamientos en un solo lugar
         let A, B;
         if (action.payload.includes('title')) {
           A = a.title.toLowerCase();
