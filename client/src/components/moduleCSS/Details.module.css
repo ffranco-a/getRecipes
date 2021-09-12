@@ -1,0 +1,17 @@
+.detailsContainer {
+  position: absolute;
+  top:0;
+  width: 100vw;
+  height: 100vh;
+  transition: background-image 1s;
+  background-size: cover;
+  background-position: center center;
+  /* filter: brightness(75%) */
+}
+
+.detailsInfo {
+  color: white;
+  text-align: center;
+  margin-top: 50px;
+  backdrop-filter: brightness(75%) saturate(70%);
+}

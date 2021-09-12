@@ -8,7 +8,7 @@ export default function Receta({ title, image, diets, id }) {
       className={style.recipeCardContainer}
       style={{ backgroundImage: `url(${image})` }}
     >
-      <Link to={`/home/recipe/${id}`} className={style.container}>
+      <Link to={`/recipe/${id}`} className={style.container}>
         <div className={style.recipeCardInfo}>
           <h3>{title}</h3>
           <div className={style.diets}>{diets.map((diet, index) => (

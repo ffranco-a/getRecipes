@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getRecipes } from '../actions';
+import style from './moduleCSS/Landing.module.css'
 
 function Landing({ recipes, getRecipes }) {
   
@@ -12,7 +13,7 @@ function Landing({ recipes, getRecipes }) {
   }, [recipes, getRecipes]);
 
   return (
-    <div>
+    <div className={style.landing}>
       <Link to="/home">Entrar</Link>
     </div>
   );

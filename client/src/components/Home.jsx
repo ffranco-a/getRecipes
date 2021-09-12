@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getRecipes } from '../actions';
 import Pagination from './Pagination.jsx';
 import SearchBar from './SearchBar.jsx';
+import style from './moduleCSS/Home.module.css';
 
 function Home({ allRecipes, getRecipes }) {
   useEffect(() => {
@@ -12,7 +13,7 @@ function Home({ allRecipes, getRecipes }) {
   }, [allRecipes.length, getRecipes]);
 
   return (
-    <div>
+    <div className={style.home}>
       <SearchBar />
       <Pagination />
     </div>

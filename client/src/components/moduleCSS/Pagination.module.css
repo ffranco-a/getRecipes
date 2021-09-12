@@ -1,7 +1,7 @@
 .recipesContainer {
   display: grid;
-  grid-template-columns: 20vw 20vw 20vw;
-  grid-template-rows: 25vh 25vh 25vh;
+  grid-template-columns: 22vw 22vw 22vw;
+  grid-template-rows: 26vh 26vh 26vh;
   gap: 0 5vw;
   justify-content: center;
   align-items: center;
@@ -14,7 +14,7 @@
 }
 
 .pagesList li {
-  padding: 10px;
+  padding: 5px;
   cursor: pointer;
   border-radius: 99px;
   width: 20px;

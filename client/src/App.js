@@ -13,12 +13,12 @@ import Home from "./components/Home.jsx";
 function App() {
   return (
     <Provider store={store}>
+      <Route path="/" component={NavBar} />
       <Route exact path="/" component={Landing} />
-      <Route path="/home" component={NavBar} />
       <Route exact path="/home" component={Home} />
-      <Route exact path="/home/recipe/:id" component={Detail} />
-      <Route exact path="/home/create" component={CreateRecipe} />
-      <Route exact path="/home/diets" component={Diets} />
+      <Route exact path="/recipe/:id" component={Detail} />
+      <Route exact path="/create" component={CreateRecipe} />
+      <Route exact path="/diets" component={Diets} />
     </Provider>
   );
 }

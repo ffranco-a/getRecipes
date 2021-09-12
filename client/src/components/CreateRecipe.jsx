@@ -10,6 +10,8 @@ function CreateRecipe({ getRecipes }) {
   const [recipe, setRecipe] = useState({
     title: '',
     summary: '',
+    spoonacularScore: 0,
+    healthScore: 0,
     image: '',
   });
   const [diets, setDiets] = useState({
@@ -155,9 +157,25 @@ function CreateRecipe({ getRecipes }) {
   return (
     <form className={style.createRecipe}>
       <label>Recipe title: {errors.title}</label>
-      <input type="text" name="title" onChange={handleChange} required />
+      <input type="text" name="title" onChange={handleChange} />
       <span>summary: {errors.summary}</span>
-      <textarea type="text" name="summary" onChange={handleChange} required />
+      <textarea type="text" name="summary" placeholder="describe your recipe!" onChange={handleChange} />
+      <div>
+        <label>Score:</label>
+        <input
+          type="number"
+          name="spoonacularScore"
+          placeholder="from 0 to 100"
+          onChange={handleChange}
+        />
+        <label>Health score: </label>
+        <input
+          type="number"
+          name="healthScore"
+          placeholder="from 0 to 100"
+          onChange={handleChange}
+        />
+      </div>
 
       {/* //////////////////////// */}
       {/* Dynamic ingredient input */}
@@ -169,6 +187,7 @@ function CreateRecipe({ getRecipes }) {
             <input
               type="text"
               name="name"
+              placeholder="Ingredient name"
               value={ingredient.name}
               id={index}
               onChange={handleIngredients}
@@ -176,6 +195,7 @@ function CreateRecipe({ getRecipes }) {
             <input
               type="number"
               name="amount"
+              placeholder="quantity"
               value={ingredient.amount}
               id={index}
               onChange={handleIngredients}
@@ -183,6 +203,7 @@ function CreateRecipe({ getRecipes }) {
             <input
               type="text"
               name="unitLong"
+              placeholder="units (e.g. grams, cups, tbsp)"
               value={ingredient.unitLong}
               id={index}
               onChange={handleIngredients}
@@ -193,7 +214,7 @@ function CreateRecipe({ getRecipes }) {
           </li>
         ))}
         <button type="button" onClick={handleAddIngredient}>
-          +
+          Add ingredient
         </button>
       </ul>
 
@@ -202,16 +223,6 @@ function CreateRecipe({ getRecipes }) {
       {/* ///////////////////////////////// */}
       <span>
         Step by step:
-        <button type="button" onClick={handleAddStep}>
-          +
-        </button>
-        <button
-          type="button"
-          onClick={handleRemoveLastStep}
-          style={instructions.length === 0 ? { visibility: 'hidden' } : null}
-        >
-          -
-        </button>
       </span>
       <ol className={style.instructions}>
         {instructions.map(i => (
@@ -219,6 +230,16 @@ function CreateRecipe({ getRecipes }) {
             <input name={i.number} onChange={handleInstructions}></input>
           </li>
         ))}
+        <button type="button" onClick={handleAddStep}>
+          Add step
+        </button>
+        <button
+          type="button"
+          onClick={handleRemoveLastStep}
+          style={instructions.length === 0 ? { visibility: 'hidden' } : null}
+        >
+          Remove last
+        </button>
       </ol>
 
       {/* ////////////// */}
