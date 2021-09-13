@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import style from './moduleCSS/Recipe.module.css';
 import { removeFavorite } from '../actions';
+import { TiDelete } from 'react-icons/ti';
 
 function Recipe({
   title,
@@ -24,13 +25,17 @@ function Recipe({
       style={{ backgroundImage: `url(${image})` }}
     >
       {favorite && (
-        <button
+        // <button
+        //   onClick={handleRemoveFav}
+        //   title="Remove this recipe from favorites"
+        //   className={style.removeFromFavs}
+        // >
+        //   </button>
+        <TiDelete
           onClick={handleRemoveFav}
-          title="Remove this recipe from favorites"
           className={style.removeFromFavs}
-        >
-          -
-        </button>
+          title="Remove this recipe from favorites"
+        />
       )}
       <Link to={`/recipe/${id}`} className={style.container}>
         <div className={style.recipeCardInfo}>

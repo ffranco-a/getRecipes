@@ -6,6 +6,7 @@ import {
   FILTER,
   ADD_FAVORITE,
   REMOVE_FAVORITE,
+  ERROR,
 } from '../actions/index.js';
 
 const rootReducer = {
@@ -1735,27 +1736,38 @@ const rootReducer = {
   details: {},
   diets: [],
   favorites: [],
+  error: '',
 };
 
 const reducer = (state = rootReducer, action) => {
   switch (action.type) {
+    case ERROR: {
+      return {
+        ...state,
+        error: action.payload,
+      }
+    }
+
     case GET_RECIPES:
       return {
         ...state,
         recipes: [...action.payload],
         allRecipes: [...action.payload],
+        error: '',
       };
 
     case GET_RECIPE_BY_ID:
       return {
         ...state,
         details: { ...action.payload },
+        error: '',
       };
 
     case GET_TYPES:
       return {
         ...state,
         diets: [...action.payload],
+        error: '',
       };
 
     case ORDER:
@@ -1788,6 +1800,7 @@ const reducer = (state = rootReducer, action) => {
       return {
         ...state,
         recipes: [...ordered],
+        error: '',
       };
 
     case FILTER:
@@ -1795,6 +1808,7 @@ const reducer = (state = rootReducer, action) => {
         return {
           ...state,
           recipes: [...state.allRecipes],
+          error: '',
         };
       }
       let filtered = [...state.allRecipes];
@@ -1806,6 +1820,7 @@ const reducer = (state = rootReducer, action) => {
       return {
         ...state,
         recipes: [...filtered],
+        error: '',
       };
 
     case ADD_FAVORITE:
@@ -1821,6 +1836,7 @@ const reducer = (state = rootReducer, action) => {
       return {
         ...state,
         favorites: [...state.favorites, { ...newFavorite }],
+        error: '',
       };
 
     case REMOVE_FAVORITE:
@@ -1830,6 +1846,7 @@ const reducer = (state = rootReducer, action) => {
       return {
         ...state,
         favorites: [...filterFavs],
+        error: '',
       };
 
     default:

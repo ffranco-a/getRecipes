@@ -10,9 +10,9 @@
 }
 
 .detailsInfo {
-  background-color: #0006;
+  background-color: #0007;
   color: white;
-  text-shadow: #0009 1px 1px 10px;
+  text-shadow: #000 1px 1px 10px;
   border-radius: 15px;
   border: 2px groove #0003;
   
@@ -48,10 +48,20 @@
 }
 
 .addFav {
-  font-size: 1.3rem;
-  background-color: #0006;
+  size: 1.5rem;
+  background-color: transparent;
   color: white;
   border: none;
+  cursor: pointer;
+  margin-left: 5px;
+  border-radius: 99px;
+  padding: 5px;
+  transition: box-shadow 1s;
+}
+
+.addFav:hover {
+  box-shadow: 0 0 10px #FFF9 inset;
+  transition: box-shadow 0.2s;
 }
 
 .summary {

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getRecipeById, addFavorite } from '../actions';
 import style from './moduleCSS/Details.module.css';
-import { GoStar } from "react-icons/go";
+import { TiHeartOutline } from 'react-icons/ti';
 
 function Detail({ details, getRecipeById, match, addFavorite }) {
   useEffect(() => {
@@ -26,23 +26,23 @@ function Detail({ details, getRecipeById, match, addFavorite }) {
             <div>
               <h2>
                 {details.title}
-                <button
+                <TiHeartOutline
                   className={style.addFav}
                   onClick={handleAddFavorite}
                   title="Add this recipe to favorites"
-                >
-                  <GoStar />
-                </button>
+                />
               </h2>
             </div>
-            <div dangerouslySetInnerHTML={{ __html: details.summary }} className={style.summary}/>
+            <div className={style.summary}>
+              {details.summary}
+            </div>
           </div>
 
           <div className={style.detailsGrid2}>
             <img src={details.image} alt="" />
 
             {/* Diets only shown if found any */}
-            {details.diets && (
+            {details.diets !== [] && (
               <div className={style.diets}>
                 <b>Diets:</b>
                 {details.diets.map((diet, index) => {

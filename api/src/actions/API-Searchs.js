@@ -94,7 +94,7 @@ const apiSearchById = id =>
       return {
         id: response.data.id,
         title: response.data.title,
-        summary: response.data.summary,
+        summary: response.data.summary.replace(/<[^>]*>?/g, ''),
         spoonacularScore: response.data.spoonacularScore,
         healthScore: response.data.healthScore,
         ingredients: response.data.extendedIngredients.map(ingredient => {

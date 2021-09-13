@@ -18,7 +18,7 @@ recipes.get('/', async (req, res) => {
     if (filtered.length === 0)
     return res
       .status(404) // ← revisar códigos de error
-      .json({ error: 'No se encontraron recetas con ese nombre' });
+      .json({ message: 'No se encontraron recetas con ese nombre' });
     return res.json(filtered);
   }
 
@@ -39,7 +39,7 @@ recipes.get('/:idReceta', async (req, res) => {
   if (id.includes('-')) {
     let dbSearch = await dbSearchById(id);
     if (dbSearch !== null) return res.json(dbSearch);
-    return res.status(404).json({ error: 'No se encontró una receta con ese id :(' });
+    return res.status(404).json({ message: 'No se encontró una receta con ese id :(' });
   }
 
   // ↓ si no entró al if anterior, busco en la API
@@ -47,7 +47,7 @@ recipes.get('/:idReceta', async (req, res) => {
     let apiSearch = await apiSearchById(id);
     return res.json(apiSearch);
   } catch (e) {
-    res.status(404).json({ error: 'No se encontró una receta con ese id :(' });
+    res.status(404).json({ message: 'No se encontró una receta con ese id :(' });
   }
 });
 

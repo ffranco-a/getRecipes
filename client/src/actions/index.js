@@ -7,6 +7,7 @@ export const ORDER = 'ORDER';
 export const FILTER = 'FILTER';
 export const ADD_FAVORITE = 'ADD_FAVORITE';
 export const REMOVE_FAVORITE = 'REMOVE_FAVORITE';
+export const ERROR = 'ERROR';
 
 const LINK = 'http://localhost:3001';
 
@@ -15,7 +16,10 @@ export function getRecipes() {
     axios
       .get(`${LINK}/recipes`)
       .then(response => dispatch({ type: GET_RECIPES, payload: response.data }))
-      .catch(e => console.log(e));
+      .catch(error => {
+        console.log(error); // DELETE DELETE DELETE
+        dispatch({ type: ERROR, payload: error.message });
+      });
   };
 }
 
@@ -24,7 +28,10 @@ export function getRecipesByName(name) {
     axios
       .get(`${LINK}/recipes?name=${name}`)
       .then(response => dispatch({ type: GET_RECIPES, payload: response.data }))
-      .catch(e => console.log(e));
+      .catch(error => {
+        console.log(error); // DELETE DELETE DELETE
+        dispatch({ type: ERROR, payload: error.message });
+      });
   };
 }
 

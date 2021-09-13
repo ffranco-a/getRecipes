@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import style from './moduleCSS/SearchBar.module.css';
 import { getRecipes, getRecipesByName, order, filter } from '../actions';
-import { GoSync, GoSearch } from "react-icons/go";
+import { TiRefresh, TiZoom } from "react-icons/ti";
 
 function SearchBar({ getRecipes, getRecipesByName, order, filter }) {
   const [name, setName] = useState('');
@@ -42,18 +42,18 @@ function SearchBar({ getRecipes, getRecipesByName, order, filter }) {
   return (
     <div className={style.searchBarContainer}>
       <div className={style.searchBar}>
-        <button onClick={handleRefresh} className={style.refresh} title="Refresh recipes list">
-          <GoSync />
-        </button>
+        {/* <button onClick={handleRefresh} className={style.refresh} title="Refresh recipes list">
+        </button> */}
+          <TiRefresh onClick={handleRefresh} className={style.refresh} title="Refresh recipes list" />
         <input
           className={style.searchBarInput}
           type="text"
           placeholder="Search for recipes..."
           onChange={handleChange}
         />
-        <button onClick={handleSearch} className={style.searchButton}>
-          <GoSearch />
-        </button>
+        {/* <button onClick={handleSearch} className={style.searchButton}>
+        </button> */}
+          <TiZoom onClick={handleSearch} className={style.searchButton} />
         <label>Order by:</label>
         <select type="options" onChange={handleOrder}>
           <option>--Select--</option>

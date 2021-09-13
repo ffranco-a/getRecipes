@@ -8,7 +8,7 @@
   justify-content: center;
   align-items: center;
   color: white;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: bold;
   text-shadow: 1px 1px 5px #000;
 }
@@ -24,11 +24,14 @@
   border: none;
 }
 
+.searchBarInput:active, .searchBarInput:focus{
+  outline: none
+}
+
 .refresh {
   position: relative;
-  top: 5px;
+  top: 10px;
   margin-right: 10px;
-  font-size: 1.3rem;
   color: white;
   background-color: transparent;
   border: none;
@@ -49,11 +52,17 @@
   border: none;
   cursor: pointer;
   position: relative;
-  right: 23px;
-  top: 2px;
+  right: 27px;
+  top: 9px;
   padding: 3px;
   background-color: #0003;
   color: white;
+  transition: background-color 1s;
+}
+
+.searchButton:hover {
+  background-color: #00000055;
+  transition: background-color 0.3s;
 }
 
 .filterDiets {
