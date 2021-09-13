@@ -1,14 +1,28 @@
 .searchBarContainer {
-  margin-top: 80px;
+  margin-top: 60px;
+
+  padding-top: 10px;
   text-align: center;
-  /* display: flex;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center; */
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  text-shadow: 1px 1px 5px #000;
 }
 
 .searchBar {
+  align-items: center;
+}
+
+.searchBarInput {
   height: 20px;
   width: 400px;
+}
+
+.refresh {
+  margin-right: 20px;
 }
 
 .searchButton {
@@ -17,4 +31,12 @@
   cursor: pointer;
   position: relative;
   right: 56px;
+}
+
+.filterDiets {
+  padding: 10px;
+}
+
+.filterDiets label {
+  padding-left: 15px;
 }

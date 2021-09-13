@@ -5,11 +5,28 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url('./img/calum-lewis-vA1L1jRTM70-unsplash.jpg') no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  background: rgb(146, 146, 130);
+  background: -moz-linear-gradient(
+    45deg,
+    rgba(146, 146, 130, 1) 0%,
+    rgba(226, 223, 218, 1) 65%,
+    rgba(137, 119, 119, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    45deg,
+    rgba(146, 146, 130, 1) 0%,
+    rgba(226, 223, 218, 1) 65%,
+    rgba(137, 119, 119, 1) 100%
+  );
+  background: linear-gradient(
+    45deg,
+    rgba(146, 146, 130, 1) 0%,
+    rgba(226, 223, 218, 1) 65%,
+    rgba(137, 119, 119, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#929282",endColorstr="#897777",GradientType=1);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 code {

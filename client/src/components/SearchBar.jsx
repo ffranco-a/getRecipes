@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import style from './moduleCSS/SearchBar.module.css';
-import { getRecipesByName, order, filter } from '../actions';
+import { getRecipes, getRecipesByName, order, filter } from '../actions';
 
-function SearchBar({ getRecipesByName, order, filter }) {
+function SearchBar({ getRecipes, getRecipesByName, order, filter }) {
   const [name, setName] = useState('');
   const [diets, setDiets] = useState([]);
 
   useEffect(() => {
     filter(diets);
   }, [filter, diets]);
+
+  const handleRefresh = () => {
+    getRecipes();
+  };
 
   const handleChange = e => {
     setName(e.target.value);
@@ -36,25 +40,31 @@ function SearchBar({ getRecipesByName, order, filter }) {
 
   return (
     <div className={style.searchBarContainer}>
-      <input
-        className={style.searchBar}
-        type="text"
-        placeholder="Search for recipes..."
-        onChange={handleChange}
-      />
-      <button onClick={handleSearch} className={style.searchButton}>
-        search
-      </button>
-      <select type="options" onChange={handleOrder}>
-        <option>Order by</option>
-        <option value="title-ascendent">Title A-Z</option>
-        <option value="title-descendent">Title Z-A</option>
-        <option value="score-descendent">Best Score</option>
-        <option value="score-ascendent">Score</option>
-        <option value="health-descendent">Best Health Score</option>
-        <option value="health-ascendent">Health Score</option>
-      </select>
-      <div>
+      <div className={style.searchBar}>
+        <button onClick={handleRefresh} className={style.refresh} title="Refresh recipes list">
+          refresh
+        </button>
+        <input
+          className={style.searchBarInput}
+          type="text"
+          placeholder="Search for recipes..."
+          onChange={handleChange}
+        />
+        <button onClick={handleSearch} className={style.searchButton}>
+          search
+        </button>
+        <label>Order by:</label>
+        <select type="options" onChange={handleOrder}>
+          <option>--Select--</option>
+          <option value="title-ascendent">Title A-Z</option>
+          <option value="title-descendent">Title Z-A</option>
+          <option value="score-descendent">Best Score</option>
+          <option value="score-ascendent">Score</option>
+          <option value="health-descendent">Best Health Score</option>
+          <option value="health-ascendent">Health Score</option>
+        </select>
+      </div>
+      <div className={style.filterDiets}>
         Filter by diets:
         <label for="gluten">
           <input type="checkbox" id="gluten" onChange={handleFilter} />
@@ -93,4 +103,6 @@ function SearchBar({ getRecipesByName, order, filter }) {
   );
 }
 
-export default connect(null, { getRecipesByName, order, filter })(SearchBar);
+export default connect(null, { getRecipes, getRecipesByName, order, filter })(
+  SearchBar
+);

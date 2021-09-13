@@ -6,7 +6,7 @@ function NavBar() {
   return (
     <div className={style.navBar}>
       <Link to="/" activeClassName={style.active}>Welcome</Link>
-      <NavLink to="/home" activeClassName={style.active}>Home</NavLink>
+      <NavLink to="/home" activeClassName={style.active}>Explore</NavLink>
       <NavLink to="/create" activeClassName={style.active}>Create</NavLink>
       <NavLink to="/diets" activeClassName={style.active}>Diets</NavLink>
       <NavLink to="/favorites" activeClassName={style.active}>Favorites</NavLink>

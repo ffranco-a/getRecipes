@@ -1,5 +1,5 @@
 .home {
-  backdrop-filter: blur(5px) saturate(80%);
+  backdrop-filter: saturate(80%);
   animation: fadeIn;
   animation-duration: 0.7s;
   animation-timing-function: cubic-bezier(0, 0, 0.1, 1)
@@ -14,5 +14,6 @@
   to {
     opacity: 1;
     transform: scale(1);
+    filter: blur(0);
   }
 }

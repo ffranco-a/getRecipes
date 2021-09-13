@@ -1,13 +1,77 @@
-/* .landing {
-  background-image: url('../../img/calum-lewis-vA1L1jRTM70-unsplash.jpg');
+.landingBackground {
+  position: absolute;
   width: 100vw;
   height: 100vh;
-  background-position: center;
+  background: url('../../img/calum-lewis-vA1L1jRTM70-unsplash.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
-} */
+  transition: background-image 1s;
+  animation: landing;
+  animation-duration: 2s;
+  animation-timing-function: cubic-bezier(0, 0, 0.1, 1);
+}
 
 .landing {
+  backdrop-filter: blur(3px);
+  background-color: #6661;
+  padding: 40px;
   text-align: center;
   position: relative;
-  top: 40vh;
+  top: 39vh;
+  animation: fadeIn;
+  animation-duration: 3s;
+  animation-timing-function: cubic-bezier(0, 0, 0.1, 1);
+  transition: backdrop-filter 0.8s;
+}
+
+.landing a {
+  text-decoration: none;
+  font-size: 3rem;
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 2px 6px #4446;
+  transition: text-shadow 1s;
+}
+
+.landing:hover {
+  backdrop-filter: blur(1px);
+  transition: backdrop-filter 0.2s;
+}
+
+.landing a:hover {
+  text-shadow: 0 2px 10px #2229;
+  transition: text-shadow 0.2s;
+}
+
+@keyframes landing {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+    filter: blur(10px);
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+    filter: blur(10px);
+  }
+  33% {
+    transform: scale(0.95);
+    opacity: 0;
+    filter: blur(10px);
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
 }

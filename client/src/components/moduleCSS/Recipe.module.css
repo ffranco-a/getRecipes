@@ -14,7 +14,7 @@
   animation-timing-function: cubic-bezier(0, 0, 0.1, 1);
   box-shadow: 0 4px 4px 1px #2223;
   filter: saturate(60%);
-  opacity: 0.8;
+  opacity: 0.9;
   transition: filter 1s, opacity 1s;
 }
 
@@ -30,7 +30,7 @@
     filter: blur(2px);
   }
   to {
-    opacity: 0.8;
+    opacity: 0.9;
     transform: scale(1);
   }
 }
