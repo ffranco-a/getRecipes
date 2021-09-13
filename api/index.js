@@ -32,16 +32,6 @@ conn.sync({ force: true }).then(() => {
       description:
         'No ingredients may contain meat or meat by-products, such as bones or gelatin.',
     });
-    const dietVegan = Diet.create({
-      name: 'Vegan',
-      description:
-        'No ingredients may contain meat or meat by-products, such as bones or gelatin, nor may they contain eggs, dairy, or honey.',
-    });
-    const dietGlutenFree = Diet.create({
-      name: 'Gluten free',
-      description:
-        'Eliminating gluten means avoiding wheat, barley, rye, and other gluten-containing grains and foods made from them (or that may have been cross contaminated).',
-    });
     const dietLactoVegetarian = Diet.create({
       name: 'Lacto vegetarian',
       description:
@@ -51,6 +41,16 @@ conn.sync({ force: true }).then(() => {
       name: 'Ovo vegetarian',
       description:
       'All ingredients must be vegetarian and none of the ingredients can be or contain dairy.',
+    });
+    const dietVegan = Diet.create({
+      name: 'Vegan',
+      description:
+        'No ingredients may contain meat or meat by-products, such as bones or gelatin, nor may they contain eggs, dairy, or honey.',
+    });
+    const dietGlutenFree = Diet.create({
+      name: 'Gluten free',
+      description:
+        'Eliminating gluten means avoiding wheat, barley, rye, and other gluten-containing grains and foods made from them (or that may have been cross contaminated).',
     });
     const dietKetogenic = Diet.create({
       name: 'Ketogenic',

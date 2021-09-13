@@ -1,0 +1,47 @@
+.dietsContainer {
+  background-color: #0006;
+  color: white;
+  text-shadow: #0009 1px 1px 10px;
+  border-radius: 15px;
+  border: 2px groove #0003;
+
+  margin-top: 80px;
+  width: 80vw;
+  height: 80vh;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 20px;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  animation: fadeIn;
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0, 0, 0.1, 1);
+}
+
+.diet {
+  padding: 10px;
+  width: 47%;
+}
+
+.diet + .diet {
+  border-top: 2px groove #fff4;
+}
+
+.diet:nth-last-of-type(1) {
+  border-bottom: 2px groove #fff4;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}

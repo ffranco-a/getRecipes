@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import style from './moduleCSS/SearchBar.module.css';
 import { getRecipes, getRecipesByName, order, filter } from '../actions';
+import { GoSync, GoSearch } from "react-icons/go";
 
 function SearchBar({ getRecipes, getRecipesByName, order, filter }) {
   const [name, setName] = useState('');
@@ -42,7 +43,7 @@ function SearchBar({ getRecipes, getRecipesByName, order, filter }) {
     <div className={style.searchBarContainer}>
       <div className={style.searchBar}>
         <button onClick={handleRefresh} className={style.refresh} title="Refresh recipes list">
-          refresh
+          <GoSync />
         </button>
         <input
           className={style.searchBarInput}
@@ -51,7 +52,7 @@ function SearchBar({ getRecipes, getRecipesByName, order, filter }) {
           onChange={handleChange}
         />
         <button onClick={handleSearch} className={style.searchButton}>
-          search
+          <GoSearch />
         </button>
         <label>Order by:</label>
         <select type="options" onChange={handleOrder}>

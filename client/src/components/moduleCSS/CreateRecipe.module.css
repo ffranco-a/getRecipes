@@ -12,6 +12,21 @@
   width: 70vw;
   min-width: 800px;
   margin: 100px auto;
+
+  animation: fadeIn;
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0, 0, 0.1, 1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
 }
 
 .dynamicInputs {

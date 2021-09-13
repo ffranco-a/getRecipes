@@ -4,7 +4,16 @@ import { Link } from 'react-router-dom';
 import style from './moduleCSS/Recipe.module.css';
 import { removeFavorite } from '../actions';
 
-function Recipe({ title, image, diets, id, score, healthScore, favorite, removeFavorite }) {
+function Recipe({
+  title,
+  image,
+  diets,
+  id,
+  score,
+  healthScore,
+  favorite,
+  removeFavorite,
+}) {
   const handleRemoveFav = () => {
     removeFavorite(id);
   };
@@ -15,7 +24,11 @@ function Recipe({ title, image, diets, id, score, healthScore, favorite, removeF
       style={{ backgroundImage: `url(${image})` }}
     >
       {favorite && (
-        <button onClick={handleRemoveFav} title="Remove this recipe from favorites" className={style.removeFromFavs}>
+        <button
+          onClick={handleRemoveFav}
+          title="Remove this recipe from favorites"
+          className={style.removeFromFavs}
+        >
           -
         </button>
       )}
@@ -23,10 +36,10 @@ function Recipe({ title, image, diets, id, score, healthScore, favorite, removeF
         <div className={style.recipeCardInfo}>
           <h3>{title}</h3>
           <div className={style.scores}>
-            <span>score: {score}</span>
-            <span>healthScore: {healthScore}</span>
+            {score !== 0 && <span>score: {score}</span>}
+            {healthScore !== 0 && <span>healthScore: {healthScore}</span>}
           </div>
-          {diets.length > 0 && 
+          {diets.length > 0 && (
             <div className={style.diets}>
               {diets.map((diet, index) => (
                 <div key={index} className={style.diet}>
@@ -34,7 +47,7 @@ function Recipe({ title, image, diets, id, score, healthScore, favorite, removeF
                 </div>
               ))}
             </div>
-          }
+          )}
         </div>
       </Link>
     </div>

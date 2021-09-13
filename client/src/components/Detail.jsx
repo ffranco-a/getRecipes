@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getRecipeById, addFavorite } from '../actions';
 import style from './moduleCSS/Details.module.css';
+import { GoStar } from "react-icons/go";
 
 function Detail({ details, getRecipeById, match, addFavorite }) {
   useEffect(() => {
@@ -26,14 +27,15 @@ function Detail({ details, getRecipeById, match, addFavorite }) {
               <h2>
                 {details.title}
                 <button
+                  className={style.addFav}
                   onClick={handleAddFavorite}
                   title="Add this recipe to favorites"
                 >
-                  Fav
+                  <GoStar />
                 </button>
               </h2>
             </div>
-            <div dangerouslySetInnerHTML={{ __html: details.summary }} />
+            <div dangerouslySetInnerHTML={{ __html: details.summary }} className={style.summary}/>
           </div>
 
           <div className={style.detailsGrid2}>
@@ -49,14 +51,14 @@ function Detail({ details, getRecipeById, match, addFavorite }) {
               </div>
             )}
             <div className={style.scores}>
-              {details.spoonacularScore && (
+              {details.spoonacularScore !== 0 && (
                 <div>
                   <b>Score:</b>
                   <br />
                   {details.spoonacularScore}
                 </div>
               )}
-              {details.healthScore && (
+              {details.healthScore !== 0 && (
                 <div>
                   <b>Health score:</b>
                   <br />

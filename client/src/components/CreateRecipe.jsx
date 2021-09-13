@@ -115,7 +115,7 @@ function CreateRecipe({ getRecipes }) {
     let newRecipe = { ...recipe };
     if (newRecipe.image === '') {
       newRecipe.image =
-        'https://images.unsplash.com/photo-1506368249639-73a05d6f6488?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1868&q=80';
+        'https://images.unsplash.com/photo-1509358271058-acd22cc93898?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80';
     }
     let newIngredients = ingredients
       .filter(ingredient => ingredient.name !== '')
@@ -147,6 +147,7 @@ function CreateRecipe({ getRecipes }) {
     }
     let newRecipe = formRecipe(recipe, instructions, diets);
     axios.post('http://localhost:3001/recipe', newRecipe).then(() => {
+      alert('Recipe created succesfully!');
       getRecipes();
     });
   };

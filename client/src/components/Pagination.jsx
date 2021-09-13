@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 // import { connect } from 'react-redux';
 import Recipe from './Recipe.jsx';
 import style from './moduleCSS/Pagination.module.css';
+import { GoChevronLeft, GoChevronRight } from "react-icons/go";
 
 export default function Pagination({ recipes }) {
   const [page, setPage] = useState(1);
@@ -58,22 +59,24 @@ export default function Pagination({ recipes }) {
       </div>
 
       {/* ↓ selector para el paginado */}
-      <ul className={style.pagesList}>
-        <li onClick={handlePrev}>←</li>
-        {pages.map(num => {
-          return (
-            <li
-              key={num}
-              id={num}
-              onClick={handlePage}
-              className={parseInt(page) === num ? style.active : null}
-            >
-              {num}
-            </li>
-          );
-        })}
-        <li onClick={handleNext}>→</li>
-      </ul>
+      {pages.length > 1 && 
+        <ul className={style.pagesList}>
+          <li onClick={handlePrev}><GoChevronLeft /></li>
+          {pages.map(num => {
+            return (
+              <li
+                key={num}
+                id={num}
+                onClick={handlePage}
+                className={parseInt(page) === num ? style.active : null}
+              >
+                {num}
+              </li>
+            );
+          })}
+          <li onClick={handleNext}><GoChevronRight /></li>
+        </ul>
+      }
     </div>
   );
 }

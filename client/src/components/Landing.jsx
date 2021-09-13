@@ -20,9 +20,9 @@ function Landing({ recipes, diets, getRecipes, getDiets }) {
   return (
     <div>
       <div className={style.landingBackground} />
-      <div className={style.landing}>
-        <Link to="/home">getRecipes() {'>'}</Link>
-      </div>
+      <Link to="/home">
+        <div className={style.landing}>getRecipes() {'>'}</div>
+      </Link>
     </div>
   );
 }

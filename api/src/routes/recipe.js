@@ -20,8 +20,8 @@ recipe.post('/', async (req, res) => {
     image,
   });
   if (diets.vegetarian) newRecipe.addDiet(1);
-  if (diets.vegan) newRecipe.addDiet(2);
-  if (diets.glutenFree) newRecipe.addDiet(3);
+  if (diets.vegan) newRecipe.addDiet(4);
+  if (diets.glutenFree) newRecipe.addDiet(5);
   if (diets.ketogenic) newRecipe.addDiet(6);
   if (diets.pescetarian) newRecipe.addDiet(7);
   if (diets.paleo) newRecipe.addDiet(8);

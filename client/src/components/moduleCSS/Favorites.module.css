@@ -25,12 +25,12 @@
 }
 
 .favorites a {
-  text-decoration: underline;
+  text-decoration: none;
   color: white;
   transition: text-shadow 1s;
 }
 
 .favorites a:hover {
-  text-shadow: #000 1px 1px 15px;
+  text-shadow: #4449 1px 1px 10px;
   transition: text-shadow 0.5s;
 }
