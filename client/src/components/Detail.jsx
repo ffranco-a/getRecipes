@@ -10,60 +10,87 @@ function Detail({ details, getRecipeById, match, addFavorite }) {
 
   const handleAddFavorite = () => {
     addFavorite(details);
-  }
+    alert('Recipe succesfully added to Favorites!');
+  };
 
   return (
-    <div
-      className={style.detailsContainer}
-      style={{ backgroundImage: `url(${details.image})` }}
-    >
+    <div>
+      <div
+        className={style.detailsBackground}
+        style={{ backgroundImage: `url(${details.image})` }}
+      />
       <div className={style.detailsInfo}>
-        <h3>{details.title} <button onClick={handleAddFavorite}>Add to Favs</button></h3>
-        <div dangerouslySetInnerHTML={{ __html: details.summary }} />
-        {details.spoonacularScore && (
-          <div>Score: {details.spoonacularScore}</div>
-        )}
-        {details.healthScore && <div>Health score: {details.healthScore}</div>}
-
-        {/* Diets only shown if found any */}
-        {details.diets && (
-          <div>
-            Diets:
-            {details.diets.map((diet, index) => {
-              return <li key={index}>{diet}</li>;
-            })}
+        <div className={style.detailsGrid}>
+          <div className={style.detailsGrid1}>
+            <div>
+              <h2>
+                {details.title}
+                <button
+                  onClick={handleAddFavorite}
+                  title="Add this recipe to favorites"
+                >
+                  Fav
+                </button>
+              </h2>
+            </div>
+            <div dangerouslySetInnerHTML={{ __html: details.summary }} />
           </div>
-        )}
 
-        {/* Ingredients only shown if found any */}
-        {details.ingredients && (
-          <div>
-            Ingredients:
-            {details.ingredients.map((ingredient, index) => {
-              return (
-                <li key={index}>
-                  {ingredient.name}, {ingredient.measures.amount}{' '}
-                  {ingredient.measures.unitLong}
-                </li>
-              );
-            })}
-          </div>
-        )}
+          <div className={style.detailsGrid2}>
+            <img src={details.image} alt="" />
 
-        {/* Instructions only shown if found any */}
-        {details.analyzedInstructions && (
-          <div>
-            Instructions:
-            {details.analyzedInstructions.map(step => {
-              return (
-                <div key={step.number}>
-                  {step.number}: {step.step}
+            {/* Diets only shown if found any */}
+            {details.diets && (
+              <div className={style.diets}>
+                <b>Diets:</b>
+                {details.diets.map((diet, index) => {
+                  return <li key={index}>{diet}</li>;
+                })}
+              </div>
+            )}
+            <div className={style.scores}>
+              {details.spoonacularScore && (
+                <div>
+                  <b>Score:</b>
+                  <br />
+                  {details.spoonacularScore}
                 </div>
-              );
-            })}
+              )}
+              {details.healthScore && (
+                <div>
+                  <b>Health score:</b>
+                  <br />
+                  {details.healthScore}
+                </div>
+              )}
+            </div>
           </div>
-        )}
-        {/* <img src={details.image} alt="" /> */}
+
+          {/* Ingredients only shown if found any */}
+          {details.ingredients && (
+            <div className={style.detailsGrid3}>
+              <b>Ingredients:</b>
+              {details.ingredients.map((ingredient, index) => {
+                return (
+                  <li key={index}>
+                    {ingredient.name}, {ingredient.measures.amount}{' '}
+                    {ingredient.measures.unitLong}
+                  </li>
+                );
+              })}
+            </div>
+          )}
+
+          {/* Instructions only shown if found any */}
+          {details.analyzedInstructions && (
+            <ol className={style.detailsGrid4}>
+              <b>Instructions step by step:</b>
+              {details.analyzedInstructions.map(step => {
+                return <li key={step.number}>{step.step}</li>;
+              })}
+            </ol>
+          )}
+        </div>
       </div>
     </div>
   );

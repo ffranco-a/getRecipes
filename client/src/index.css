@@ -5,18 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url('./img/calum-lewis-vA1L1jRTM70-unsplash.jpg');
-  /* transition: backgrouns-image 1s; */
-  width: 100vw;
-  /* height: 100vh; */
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  /* background-position:top; */
-  /* background-size: cover; */
-  background-repeat: no-repeat;
+  background: url('./img/calum-lewis-vA1L1jRTM70-unsplash.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 code {

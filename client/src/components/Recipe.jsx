@@ -15,8 +15,8 @@ function Recipe({ title, image, diets, id, score, healthScore, favorite, removeF
       style={{ backgroundImage: `url(${image})` }}
     >
       {favorite && (
-        <button onClick={handleRemoveFav} className={style.removeFromFavs}>
-          Remove from fav
+        <button onClick={handleRemoveFav} title="Remove this recipe from favorites" className={style.removeFromFavs}>
+          -
         </button>
       )}
       <Link to={`/recipe/${id}`} className={style.container}>
