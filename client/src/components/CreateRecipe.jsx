@@ -159,7 +159,12 @@ function CreateRecipe({ getRecipes }) {
       <label>Recipe title: {errors.title}</label>
       <input type="text" name="title" onChange={handleChange} />
       <span>summary: {errors.summary}</span>
-      <textarea type="text" name="summary" placeholder="describe your recipe!" onChange={handleChange} />
+      <textarea
+        type="text"
+        name="summary"
+        placeholder="describe your recipe!"
+        onChange={handleChange}
+      />
       <div>
         <label>Score:</label>
         <input
@@ -177,70 +182,84 @@ function CreateRecipe({ getRecipes }) {
         />
       </div>
 
-      {/* //////////////////////// */}
-      {/* Dynamic ingredient input */}
-      {/* //////////////////////// */}
-      <span>Ingredients:</span>
-      <ul>
-        {ingredients.map((ingredient, index) => (
-          <li key={index}>
-            <input
-              type="text"
-              name="name"
-              placeholder="Ingredient name"
-              value={ingredient.name}
-              id={index}
-              onChange={handleIngredients}
-            ></input>
-            <input
-              type="number"
-              name="amount"
-              placeholder="quantity"
-              value={ingredient.amount}
-              id={index}
-              onChange={handleIngredients}
-            ></input>
-            <input
-              type="text"
-              name="unitLong"
-              placeholder="units (e.g. grams, cups, tbsp)"
-              value={ingredient.unitLong}
-              id={index}
-              onChange={handleIngredients}
-            ></input>
-            <button type="button" id={index} onClick={handleRemoveIngredient}>
-              -
+      <div className={style.dynamicInputs}>
+        <div>
+          {/* //////////////////////// */}
+          {/* Dynamic ingredient input */}
+          {/* //////////////////////// */}
+          <span>Ingredients:</span>
+          <ul>
+            {ingredients.map((ingredient, index) => (
+              <li key={index}>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Ingredient name"
+                  value={ingredient.name}
+                  id={index}
+                  onChange={handleIngredients}
+                  className={style.ingredientName}
+                ></input>
+                <input
+                  type="number"
+                  name="amount"
+                  placeholder="quantity"
+                  value={ingredient.amount}
+                  id={index}
+                  onChange={handleIngredients}
+                  className={style.ingredientAmount}
+                ></input>
+                <input
+                  type="text"
+                  name="unitLong"
+                  placeholder="units (e.g. grams)"
+                  value={ingredient.unitLong}
+                  id={index}
+                  onChange={handleIngredients}
+                  className={style.ingredientUnit}
+                ></input>
+                <button
+                  type="button"
+                  id={index}
+                  onClick={handleRemoveIngredient}
+                  title="Remove this ingredient"
+                >
+                  -
+                </button>
+              </li>
+            ))}
+            <button type="button" onClick={handleAddIngredient}>
+              Add ingredient
             </button>
-          </li>
-        ))}
-        <button type="button" onClick={handleAddIngredient}>
-          Add ingredient
-        </button>
-      </ul>
+          </ul>
+        </div>
 
-      {/* ///////////////////////////////// */}
-      {/* Dynamic step by step instructions */}
-      {/* ///////////////////////////////// */}
-      <span>
-        Step by step:
-      </span>
-      <ol className={style.instructions}>
-        {instructions.map(i => (
-          <li key={i.number} className={style.step}>
-            <input name={i.number} onChange={handleInstructions}></input>
-          </li>
-        ))}
-        <button type="button" onClick={handleAddStep}>
-          Add step
-        </button>
-        <button
-          type="button"
-          onClick={handleRemoveLastStep}
-          style={instructions.length === 0 ? { visibility: 'hidden' } : null}
-        >
-          Remove last
-        </button>
-      </ol>
+        <div>
+          {/* ///////////////////////////////// */}
+          {/* Dynamic step by step instructions */}
+          {/* ///////////////////////////////// */}
+          <span>Step by step:</span>
+          <ol className={style.instructions}>
+            {instructions.map(i => (
+              <li key={i.number} className={style.step}>
+                <input name={i.number} onChange={handleInstructions}></input>
+                {i.number === instructions.length && (
+                  <button
+                    type="button"
+                    onClick={handleRemoveLastStep}
+                    title="remove last step"
+                  >
+                    -
+                  </button>
+                )}
+              </li>
+            ))}
+            <button type="button" onClick={handleAddStep}>
+              Add step
+            </button>
+          </ol>
+        </div>
+      </div>
 
       {/* ////////////// */}
       {/* Diet selection */}
