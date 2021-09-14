@@ -15,7 +15,7 @@
   box-shadow: 0 4px 4px 1px #2223;
   filter: saturate(60%);
   opacity: 0.9;
-  transition: filter 1.5s, opacity 1.5s;
+  transition: filter 1s, opacity 1s;
 }
 
 .recipeCardContainer:hover {

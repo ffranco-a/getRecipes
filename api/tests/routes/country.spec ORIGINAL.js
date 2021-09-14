@@ -14,11 +14,15 @@ describe('Recipe routes', () => {
   .catch((err) => {
     console.error('Unable to connect to the database:', err);
   }));
-  beforeEach(() => Recipe.sync({ force: true })
-    .then(() => Recipe.create(recipe)));
+
+  // beforeEach(() => Recipe.sync({ force: true })
+  //   .then(() => Recipe.create(recipe)));
+
   describe('GET /recipes', () => {
     it('should get 200', () =>
-      agent.get('/recipes').expect(200)
+      agent.get('/types').expect(200)
     );
   });
+
+  
 });
