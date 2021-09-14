@@ -1827,6 +1827,7 @@ const reducer = (state = rootReducer, action) => {
       if (state.favorites.some(r => r.id === action.payload.id)) {
         return {
           ...state,
+          error: '',
         };
       }
       let newFavorite = {

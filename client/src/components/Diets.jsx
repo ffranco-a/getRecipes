@@ -23,6 +23,7 @@ function Diets({ diets, getDiets }) {
 const mapStateToProps = state => {
   return {
     diets: state.diets,
+    error: state.error,
   };
 };
 

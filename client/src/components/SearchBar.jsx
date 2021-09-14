@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import style from './moduleCSS/SearchBar.module.css';
 import { getRecipes, getRecipesByName, order, filter } from '../actions';
-import { TiRefresh, TiZoom } from "react-icons/ti";
+import { TiRefresh, TiZoom } from 'react-icons/ti';
 
 function SearchBar({ getRecipes, getRecipesByName, order, filter }) {
   const [name, setName] = useState('');
@@ -22,7 +22,6 @@ function SearchBar({ getRecipes, getRecipesByName, order, filter }) {
 
   const handleSearch = () => {
     getRecipesByName(name);
-    setName('');
   };
 
   const handleOrder = e => {
@@ -44,7 +43,11 @@ function SearchBar({ getRecipes, getRecipesByName, order, filter }) {
       <div className={style.searchBar}>
         {/* <button onClick={handleRefresh} className={style.refresh} title="Refresh recipes list">
         </button> */}
-          <TiRefresh onClick={handleRefresh} className={style.refresh} title="Refresh recipes list" />
+        <TiRefresh
+          onClick={handleRefresh}
+          className={style.refresh}
+          title="Refresh recipes list"
+        />
         <input
           className={style.searchBarInput}
           type="text"
@@ -53,7 +56,7 @@ function SearchBar({ getRecipes, getRecipesByName, order, filter }) {
         />
         {/* <button onClick={handleSearch} className={style.searchButton}>
         </button> */}
-          <TiZoom onClick={handleSearch} className={style.searchButton} />
+        <TiZoom onClick={handleSearch} className={style.searchButton} />
         <label>Order by:</label>
         <select type="options" onChange={handleOrder}>
           <option>--Select--</option>
@@ -83,9 +86,9 @@ function SearchBar({ getRecipes, getRecipesByName, order, filter }) {
           <input type="checkbox" id="ketogenic" onChange={handleFilter} />
           Ketogenic
         </label>
-        <label for="pescetarian">
-          <input type="checkbox" id="pescetarian" onChange={handleFilter} />
-          Pescetarian
+        <label for="pescatarian">
+          <input type="checkbox" id="pescatarian" onChange={handleFilter} />
+          Pescatarian
         </label>
         <label for="paleo">
           <input type="checkbox" id="paleo" onChange={handleFilter} />
@@ -95,9 +98,9 @@ function SearchBar({ getRecipes, getRecipesByName, order, filter }) {
           <input type="checkbox" id="primal" onChange={handleFilter} />
           Primal
         </label>
-        <label for="whole30">
-          <input type="checkbox" id="whole30" onChange={handleFilter} />
-          Whole30
+        <label for="whole">
+          <input type="checkbox" id="whole" onChange={handleFilter} />
+          Whole 30
         </label>
       </div>
     </div>

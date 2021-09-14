@@ -14,6 +14,7 @@ const apiGeneralSearch = () =>
           apiKey: API_KEY,
           addRecipeInformation: true,
           number: 100,
+          offset: 100,
         },
       }
     )

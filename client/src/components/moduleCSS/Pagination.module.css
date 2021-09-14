@@ -35,3 +35,16 @@
   background-color: #0004;
   transition: background-color 0.5s, text-shadow 0.3s;
 }
+
+.paginationButton {
+  border-radius: 99px;
+  color: white;
+  font-size: 1.8rem;
+  transition: background-color 1s;
+}
+
+.paginationButton:hover {
+  background-color: #4444;
+  text-shadow: #000 1px 1px 15px;
+  transition: background-color 0.5s;
+}

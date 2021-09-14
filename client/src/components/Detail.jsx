@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import { getRecipeById, addFavorite } from '../actions';
 import style from './moduleCSS/Details.module.css';
 import { TiHeartOutline } from 'react-icons/ti';
+import { Link } from 'react-router-dom';
+import Error from './Error.jsx';
 
-function Detail({ details, getRecipeById, match, addFavorite }) {
+function Detail({ error, details, getRecipeById, match, addFavorite }) {
   useEffect(() => {
     getRecipeById(match.params.id);
   }, [getRecipeById, match.params.id]);
@@ -13,6 +15,14 @@ function Detail({ details, getRecipeById, match, addFavorite }) {
     addFavorite(details);
     alert('Recipe succesfully added to Favorites!');
   };
+
+  if (error) {
+    return <Error error={error} />
+  }
+
+  if (!details.title) {
+    return <div className={style.detailsInfo}> Loading details.... if this process takes too long, try to <Link to="/">go back</Link> </div>;
+  }
 
   return (
     <div>
@@ -33,16 +43,14 @@ function Detail({ details, getRecipeById, match, addFavorite }) {
                 />
               </h2>
             </div>
-            <div className={style.summary}>
-              {details.summary}
-            </div>
+            <div className={style.summary}>{details.summary}</div>
           </div>
 
           <div className={style.detailsGrid2}>
             <img src={details.image} alt="" />
 
             {/* Diets only shown if found any */}
-            {details.diets !== [] && (
+            {details.diets && details.diets.length > 0 && (
               <div className={style.diets}>
                 <b>Diets:</b>
                 {details.diets.map((diet, index) => {
@@ -69,7 +77,7 @@ function Detail({ details, getRecipeById, match, addFavorite }) {
           </div>
 
           {/* Ingredients only shown if found any */}
-          {details.ingredients && (
+          {details.ingredients && details.ingredients.length > 0 && (
             <div className={style.detailsGrid3}>
               <b>Ingredients:</b>
               {details.ingredients.map((ingredient, index) => {
@@ -84,7 +92,7 @@ function Detail({ details, getRecipeById, match, addFavorite }) {
           )}
 
           {/* Instructions only shown if found any */}
-          {details.analyzedInstructions && (
+          {details.analyzedInstructions && details.analyzedInstructions.length > 0 && (
             <ol className={style.detailsGrid4}>
               <b>Instructions step by step:</b>
               {details.analyzedInstructions.map(step => {
@@ -101,6 +109,7 @@ function Detail({ details, getRecipeById, match, addFavorite }) {
 const mapStateToProps = state => {
   return {
     details: state.details,
+    error: state.error,
   };
 };
 

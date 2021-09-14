@@ -58,7 +58,7 @@ conn.sync({ force: true }).then(() => {
         'The keto diet is based more on the ratio of fat, protein, and carbs in the diet rather than specific ingredients. Generally speaking, high fat, protein-rich foods are acceptable and high carbohydrate foods are not.',
     });
     const dietPescetarian = Diet.create({
-      name: 'Pescetarian',
+      name: 'Pescatarian',
       description:
         'Everything is allowed except meat and meat by-products - some pescetarians eat eggs and dairy, some do not.',
     });
@@ -73,7 +73,7 @@ conn.sync({ force: true }).then(() => {
         'Very similar to Paleo, except dairy is allowed - think raw and full fat milk, butter, ghee, etc.',
     });
     const dietWhole30 = Diet.create({
-      name: 'Whole30',
+      name: 'Whole 30',
       description:
         'Allowed ingredients include meat, fish/seafood, eggs, vegetables, fresh fruit, coconut oil, olive oil, small amounts of dried fruit and nuts/seeds. Ingredients not allowed include added sweeteners (natural and artificial, except small amounts of fruit juice), dairy (except clarified butter or ghee), alcohol, grains, legumes (except green beans, sugar snap peas, and snow peas), and food additives, such as carrageenan, MSG, and sulfites.',
     });

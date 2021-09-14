@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import style from './moduleCSS/CreateRecipe.module.css';
 import { getRecipes } from '../actions';
 import { connect } from 'react-redux';
+import { TiDelete } from 'react-icons/ti';
 
 const axios = require('axios');
 
@@ -141,7 +142,6 @@ function CreateRecipe({ getRecipes }) {
   const handleSubmit = e => {
     e.preventDefault();
     if (recipe.title === '' || recipe.summary === '') {
-      // MODIFY!
       alert('Recipe must have a title and a summary!');
       return;
     }
@@ -157,10 +157,16 @@ function CreateRecipe({ getRecipes }) {
   ////
   return (
     <form className={style.createRecipe}>
-      <label>Recipe title: {errors.title}</label>
-      <input type="text" name="title" onChange={handleChange} />
-      <span>summary: {errors.summary}</span>
+      <label className={style.inputName}>Recipe title: {errors.title}</label>
+      <input
+        type="text"
+        name="title"
+        onChange={handleChange}
+        className={style.title}
+      />
+      <span className={style.inputName}>summary: {errors.summary}</span>
       <textarea
+        className={style.summary}
         type="text"
         name="summary"
         placeholder="describe your recipe!"
@@ -191,7 +197,7 @@ function CreateRecipe({ getRecipes }) {
           <span>Ingredients:</span>
           <ul>
             {ingredients.map((ingredient, index) => (
-              <li key={index}>
+              <li key={index} className={style.ingredient}>
                 <input
                   type="text"
                   name="name"
@@ -219,14 +225,12 @@ function CreateRecipe({ getRecipes }) {
                   onChange={handleIngredients}
                   className={style.ingredientUnit}
                 ></input>
-                <button
-                  type="button"
+                <TiDelete
+                  className={style.deleteButton}
                   id={index}
                   onClick={handleRemoveIngredient}
                   title="Remove this ingredient"
-                >
-                  -
-                </button>
+                />
               </li>
             ))}
             <button type="button" onClick={handleAddIngredient}>
@@ -245,13 +249,11 @@ function CreateRecipe({ getRecipes }) {
               <li key={i.number} className={style.step}>
                 <input name={i.number} onChange={handleInstructions}></input>
                 {i.number === instructions.length && (
-                  <button
-                    type="button"
+                  <TiDelete
+                    className={style.deleteButton}
                     onClick={handleRemoveLastStep}
                     title="remove last step"
-                  >
-                    -
-                  </button>
+                  />
                 )}
               </li>
             ))}
@@ -265,6 +267,7 @@ function CreateRecipe({ getRecipes }) {
       {/* ////////////// */}
       {/* Diet selection */}
       {/* ////////////// */}
+      <br />
       <label>Select any diets your recipe is a part of:</label>
       <div className={style.diets}>
         <label for="glutenFree">
@@ -283,9 +286,9 @@ function CreateRecipe({ getRecipes }) {
           <input type="checkbox" id="ketogenic" onChange={handleDiets} />
           Ketogenic
         </label>
-        <label for="pescetarian">
-          <input type="checkbox" id="pescetarian" onChange={handleDiets} />
-          Pescetarian
+        <label for="pescatarian">
+          <input type="checkbox" id="pescatarian" onChange={handleDiets} />
+          Pescatarian
         </label>
         <label for="paleo">
           <input type="checkbox" id="paleo" onChange={handleDiets} />
@@ -304,8 +307,14 @@ function CreateRecipe({ getRecipes }) {
       {/* ////////////////////////////////// */}
       {/* Custom recipe image through URL () */}
       {/* ////////////////////////////////// */}
-      <label>URL of custom image:</label>
-      <input type="url" name="image" onChange={handleChange} />
+      <br />
+      <label className={style.inputName}>URL of custom image:</label>
+      <input
+        className={style.url}
+        type="url"
+        name="image"
+        onChange={handleChange}
+      />
 
       <input type="submit" value="Create!" onClick={handleSubmit} />
     </form>

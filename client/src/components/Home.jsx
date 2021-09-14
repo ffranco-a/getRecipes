@@ -4,6 +4,7 @@ import { getRecipes } from '../actions';
 import Pagination from './Pagination.jsx';
 import SearchBar from './SearchBar.jsx';
 import style from './moduleCSS/Home.module.css';
+import Error from './Error.jsx';
 
 function Home({ allRecipes, recipes, error, getRecipes }) {
   useEffect(() => {
@@ -12,17 +13,8 @@ function Home({ allRecipes, recipes, error, getRecipes }) {
     }
   }, [allRecipes.length, getRecipes]);
 
-  const handleRefresh = () => {
-    getRecipes();
-  }
-
   if (error) {
-    return (
-      <div className={style.error}>
-        {`oops! seems like there has been an error: ${error}`}
-        <button onClick={handleRefresh} title="Refresh recipes">Refresh</button>
-      </div>
-    )
+    return <Error error={error} />
   }
 
   return (

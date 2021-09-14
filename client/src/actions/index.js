@@ -17,7 +17,6 @@ export function getRecipes() {
       .get(`${LINK}/recipes`)
       .then(response => dispatch({ type: GET_RECIPES, payload: response.data }))
       .catch(error => {
-        console.log(error); // DELETE DELETE DELETE
         dispatch({ type: ERROR, payload: error.message });
       });
   };
@@ -29,7 +28,6 @@ export function getRecipesByName(name) {
       .get(`${LINK}/recipes?name=${name}`)
       .then(response => dispatch({ type: GET_RECIPES, payload: response.data }))
       .catch(error => {
-        console.log(error); // DELETE DELETE DELETE
         dispatch({ type: ERROR, payload: error.message });
       });
   };
@@ -42,7 +40,9 @@ export function getRecipeById(id) {
       .then(response =>
         dispatch({ type: GET_RECIPE_BY_ID, payload: response.data })
       )
-      .catch(e => console.log(e));
+      .catch(error => {
+        dispatch({ type: ERROR, payload: error.message });
+      });
   };
 }
 

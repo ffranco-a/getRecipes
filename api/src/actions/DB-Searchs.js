@@ -54,15 +54,19 @@ const dbSearchByName = async name => {
 //  BÚSQUEDA POR ID en la BASE DE DATOS LOCAL
 //
 const dbSearchById = async id => {
-  let recipe = await Recipe.findByPk(id, {
-    include: INCLUDE,
-  });
-  let response = {
-    ...recipe.dataValues,
-    // diets: recipe.dataValues.diets.map(diet => diet.name.toLowerCase()),
-    diets: recipe.dataValues.diets.map(diet => diet.name),
-  };
-  return response;
+  try {
+    let recipe = await Recipe.findByPk(id, {
+      include: INCLUDE,
+    });
+    let response = {
+      ...recipe.dataValues,
+      // diets: recipe.dataValues.diets.map(diet => diet.name.toLowerCase()),
+      diets: recipe.dataValues.diets.map(diet => diet.name),
+    };
+    return response;
+  } catch (e) { // ← nada de esto me funciona :(
+    throw new Error(e);
+  }
 };
 
 ////////////////////

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 // import { connect } from 'react-redux';
 import Recipe from './Recipe.jsx';
 import style from './moduleCSS/Pagination.module.css';
-import { GoChevronLeft, GoChevronRight } from "react-icons/go";
+import { TiMediaPlayReverseOutline, TiMediaPlayOutline } from "react-icons/ti";
 
 export default function Pagination({ recipes }) {
   const [page, setPage] = useState(1);
@@ -61,7 +61,9 @@ export default function Pagination({ recipes }) {
       {/* ↓ selector para el paginado */}
       {pages.length > 1 && 
         <ul className={style.pagesList}>
-          <li onClick={handlePrev}><GoChevronLeft /></li>
+          {/* <li onClick={handlePrev}>
+          </li> */}
+            <TiMediaPlayReverseOutline onClick={handlePrev} className={style.paginationButton}/>
           {pages.map(num => {
             return (
               <li
@@ -74,7 +76,9 @@ export default function Pagination({ recipes }) {
               </li>
             );
           })}
-          <li onClick={handleNext}><GoChevronRight /></li>
+          {/* <li onClick={handleNext}>
+          </li> */}
+            <TiMediaPlayOutline onClick={handleNext} className={style.paginationButton}/>
         </ul>
       }
     </div>
