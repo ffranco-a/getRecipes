@@ -110,6 +110,16 @@ function CreateRecipe({ getRecipes }) {
     });
   };
 
+  /////////////////////////////////////
+  // submit disabling button handler //
+  const handleDisableSubmit = () => {
+    let disable = true;
+    if (recipe.title !== '' && recipe.summary !== '') {
+      disable = false;
+    }
+    return disable;
+  }
+
   ////////////////////
   //  before posting, I need to unify the 4 states: recipe, ingredients, instructions and diets. Final checks (custom image? ingredients quantities?)
   const formRecipe = (recipe, instructions, diets) => {
@@ -141,10 +151,6 @@ function CreateRecipe({ getRecipes }) {
   //  post recipe handler  //
   const handleSubmit = e => {
     e.preventDefault();
-    if (recipe.title === '' || recipe.summary === '') {
-      alert('Recipe must have a title and a summary!');
-      return;
-    }
     let newRecipe = formRecipe(recipe, instructions, diets);
     axios.post('http://localhost:3001/recipe', newRecipe).then(() => {
       alert('Recipe created succesfully!');
@@ -316,7 +322,7 @@ function CreateRecipe({ getRecipes }) {
         onChange={handleChange}
       />
 
-      <input type="submit" value="Create!" onClick={handleSubmit} />
+      <input type="submit" value="Create!" disabled={handleDisableSubmit()} onClick={handleSubmit} />
     </form>
   );
 }

@@ -4,8 +4,10 @@ const { Recipe } = require('../db.js');
 const recipe = Router();
 
 recipe.post('/', async (req, res) => {
-  // res.send('POST /recipe is working!');
   const { title, summary, spoonacularScore, healthScore, analyzedInstructions, ingredients, diets, image } = req.body;
+  if (!title || !summary) {
+    return res.status(400).json({ message: "Recipes must have a title and a summary!"}); // ← Esto desde el front ya impido que envíen recetas sin título o resumen pero bueno
+  }
   const newRecipe = await Recipe.create({
     title,
     summary,

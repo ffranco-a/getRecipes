@@ -20,7 +20,7 @@ recipes.get('/', async (req, res) => {
   let { name } = req.query;
   if (name) {
     let dbFiltered = await dbSearchByName(name);
-    // return res.json(dbFiltered); // ← ← ← ONLY USE IF YOU DON'T WANT TO CONSUME YOUR API POINTS/CALLS
+    // return res.json(dbFiltered) // ← ← ← ONLY USE IF YOU DON'T WANT TO CONSUME YOUR API POINTS/CALLS
     let apiFiltered = await apiSearchByName(name);
     let filtered = [...dbFiltered, ...apiFiltered];
     if (filtered.length === 0)
