@@ -82,8 +82,8 @@ function SearchBar({ getRecipes, getRecipesByName, order, filter }) {
           <input type="checkbox" id="vegan" onChange={handleFilter} />
           Vegan
         </label>
-        <label htmlFor="ketogenic">
-          <input type="checkbox" id="ketogenic" onChange={handleFilter} />
+        <label htmlFor="keto">
+          <input type="checkbox" id="keto" onChange={handleFilter} />
           Ketogenic
         </label>
         <label htmlFor="pescatarian">
@@ -92,7 +92,7 @@ function SearchBar({ getRecipes, getRecipesByName, order, filter }) {
         </label>
         <label htmlFor="paleo">
           <input type="checkbox" id="paleo" onChange={handleFilter} />
-          Paleo
+          Paleolithic
         </label>
         <label htmlFor="primal">
           <input type="checkbox" id="primal" onChange={handleFilter} />

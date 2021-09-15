@@ -25,9 +25,10 @@
 }
 
 .favorites a {
-  text-decoration: none;
+  text-decoration: underline;
   color: white;
   transition: text-shadow 1s;
+  font-size: 1.5rem;
 }
 
 .favorites a:hover {

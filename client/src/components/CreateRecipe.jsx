@@ -118,32 +118,58 @@ function CreateRecipe({ getRecipes }) {
       disable = false;
     }
     return disable;
-  }
+  };
 
   ////////////////////
-  //  before posting, I need to unify the 4 states: recipe, ingredients, instructions and diets. Final checks (custom image? ingredients quantities?)
+  //  before posting, I need to unify the 4 states: recipe, ingredients, instructions and diets. Final checks (custom image, scores, ingredients, quantities)
   const formRecipe = (recipe, instructions, diets) => {
     let newRecipe = { ...recipe };
+
+    if (newRecipe.spoonacularScore > 100) {
+      newRecipe.spoonacularScore = 0;
+    }
+
+    if (newRecipe.healthScore > 100) {
+      newRecipe.healthScore = 0;
+    }
+
     if (newRecipe.image === '') {
       newRecipe.image =
         'https://images.unsplash.com/photo-1509358271058-acd22cc93898?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80';
     }
+
     let newIngredients = ingredients
       .filter(ingredient => ingredient.name !== '')
       .map(ingredient => {
         return {
-          name: ingredient.name,
+          name:
+            ingredient.name.charAt(0).toUpperCase() + ingredient.name.slice(1),
           measures: {
             amount: ingredient.amount === 0 ? null : ingredient.amount,
             unitLong: ingredient.unitLong,
           },
         };
       });
+
+    let newInstructions = instructions
+      .filter(instruction => instruction.step !== '')
+      .map((instruction, index) => {
+        return {
+          step:
+            instruction.step.charAt(0).toUpperCase() +
+            instruction.step.slice(1),
+          number: index + 1,
+        };
+      });
+
     return {
       ...newRecipe,
+      title: newRecipe.title.charAt(0).toUpperCase() + newRecipe.title.slice(1),
+      summary:
+        newRecipe.summary.charAt(0).toUpperCase() + newRecipe.summary.slice(1),
       diets: { ...diets },
       ingredients: [...newIngredients],
-      analyzedInstructions: instructions,
+      analyzedInstructions: newInstructions,
     };
   };
 
@@ -179,12 +205,14 @@ function CreateRecipe({ getRecipes }) {
         onChange={handleChange}
       />
       <div>
-        <label>Score:</label>
+        <label>Score: </label>
         <input
           type="number"
           name="spoonacularScore"
           placeholder="from 0 to 100"
           onChange={handleChange}
+          min="0"
+          max="100"
         />
         <label>Health score: </label>
         <input
@@ -192,14 +220,16 @@ function CreateRecipe({ getRecipes }) {
           name="healthScore"
           placeholder="from 0 to 100"
           onChange={handleChange}
+          min="0"
+          max="100"
         />
       </div>
 
       <div className={style.dynamicInputs}>
+        {/* //////////////////////// */}
+        {/* Dynamic ingredient input */}
+        {/* //////////////////////// */}
         <div>
-          {/* //////////////////////// */}
-          {/* Dynamic ingredient input */}
-          {/* //////////////////////// */}
           <span>Ingredients:</span>
           <ul>
             {ingredients.map((ingredient, index) => (
@@ -245,10 +275,10 @@ function CreateRecipe({ getRecipes }) {
           </ul>
         </div>
 
+        {/* ///////////////////////////////// */}
+        {/* Dynamic step by step instructions */}
+        {/* ///////////////////////////////// */}
         <div>
-          {/* ///////////////////////////////// */}
-          {/* Dynamic step by step instructions */}
-          {/* ///////////////////////////////// */}
           <span>Step by step:</span>
           <ol className={style.instructions}>
             {instructions.map(i => (
@@ -322,7 +352,13 @@ function CreateRecipe({ getRecipes }) {
         onChange={handleChange}
       />
 
-      <input type="submit" value="Create!" disabled={handleDisableSubmit()} onClick={handleSubmit} />
+      <input
+        type="submit"
+        value="Create!"
+        disabled={handleDisableSubmit()}
+        onClick={handleSubmit}
+        className={style.submitButton}
+      />
     </form>
   );
 }

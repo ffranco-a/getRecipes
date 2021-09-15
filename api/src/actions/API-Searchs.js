@@ -14,7 +14,7 @@ const apiGeneralSearch = () =>
           apiKey: API_KEY,
           addRecipeInformation: true,
           number: 100,
-          offset: 100,
+          offset: 600, // ← tiene al menos una receta de todos los tipos de dieta! incluidas Ketogenic, Whole 30, Pescatarian y Paleo.
         },
       }
     )
@@ -42,7 +42,7 @@ const apiGeneralSearch = () =>
       // return response.data; // results
     })
     .catch(error => {
-      throw new Error('Ocurrió un error en apiGeneralSearch');
+      throw new Error(`Ocurrió un error en apiGeneralSearch: ${error}`);
     });
 
 ///////////////////////////////////
@@ -79,8 +79,8 @@ const apiSearchByName = name =>
       }
       return recipes;
     })
-    .catch(() => {
-      throw new Error('Ocurrió un error en apiSearchByName');
+    .catch(error => {
+      throw new Error(`Ocurrió un error en apiSearchByName: ${error}`);
     });
 
 ///////////////////////////////
@@ -109,8 +109,8 @@ const apiSearchById = id =>
         image: response.data.image,
       };
     })
-    .catch(() => {
-      throw new Error('Ocurrió un error en apiSearchById');
+    .catch(error => {
+      throw new Error(`Ocurrió un error en apiSearchById: ${error}`);
     });
 
 /////////////////////

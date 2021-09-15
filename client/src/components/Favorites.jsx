@@ -14,7 +14,7 @@ function Favorites({ favorites }) {
       {favorites.length === 0 ? (
         <div className={style.favorites}>
           <h3>
-            Currently you have no favorite recipes! <Link to="/home">go explore and find some!</Link>
+            Currently you have no favorite recipes, <Link to="/home">go explore and find some!</Link>
           </h3>
         </div>
       ) : (

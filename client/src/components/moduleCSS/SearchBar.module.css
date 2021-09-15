@@ -49,12 +49,14 @@
 }
 
 .searchButton {
-  height: 20px;
+  border-radius: 4px;
+  height: 18px;
+  width: 18px;
   border: none;
   cursor: pointer;
   position: relative;
-  right: 27px;
-  top: 9px;
+  right: 26px;
+  top: 8px;
   padding: 3px;
   background-color: #0003;
   color: white;
