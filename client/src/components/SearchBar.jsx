@@ -66,39 +66,39 @@ function SearchBar({ getRecipes, getRecipesByName, order, filter }) {
       </div>
       <div className={style.filterDiets}>
         Filter by diets:
-        <label for="gluten">
+        <label htmlFor="gluten">
           <input type="checkbox" id="gluten" onChange={handleFilter} />
           Gluten Free
         </label>
-        <label for="dairy">
+        <label htmlFor="dairy">
           <input type="checkbox" id="dairy" onChange={handleFilter} />
           Dairy Free
         </label>
-        <label for="vegetarian">
+        <label htmlFor="vegetarian">
           <input type="checkbox" id="vegetarian" onChange={handleFilter} />
           Vegetarian
         </label>
-        <label for="vegan">
+        <label htmlFor="vegan">
           <input type="checkbox" id="vegan" onChange={handleFilter} />
           Vegan
         </label>
-        <label for="ketogenic">
+        <label htmlFor="ketogenic">
           <input type="checkbox" id="ketogenic" onChange={handleFilter} />
           Ketogenic
         </label>
-        <label for="pescatarian">
+        <label htmlFor="pescatarian">
           <input type="checkbox" id="pescatarian" onChange={handleFilter} />
           Pescatarian
         </label>
-        <label for="paleo">
+        <label htmlFor="paleo">
           <input type="checkbox" id="paleo" onChange={handleFilter} />
           Paleo
         </label>
-        <label for="primal">
+        <label htmlFor="primal">
           <input type="checkbox" id="primal" onChange={handleFilter} />
           Primal
         </label>
-        <label for="whole">
+        <label htmlFor="whole">
           <input type="checkbox" id="whole" onChange={handleFilter} />
           Whole 30
         </label>

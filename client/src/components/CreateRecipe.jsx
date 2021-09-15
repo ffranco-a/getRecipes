@@ -276,35 +276,35 @@ function CreateRecipe({ getRecipes }) {
       <br />
       <label>Select any diets your recipe is a part of:</label>
       <div className={style.diets}>
-        <label for="glutenFree">
+        <label htmlFor="glutenFree">
           <input type="checkbox" id="glutenFree" onChange={handleDiets} />
           Gluten Free
         </label>
-        <label for="vegetarian">
+        <label htmlFor="vegetarian">
           <input type="checkbox" id="vegetarian" onChange={handleDiets} />
           Vegetarian
         </label>
-        <label for="vegan">
+        <label htmlFor="vegan">
           <input type="checkbox" id="vegan" onChange={handleDiets} />
           Vegan
         </label>
-        <label for="ketogenic">
+        <label htmlFor="ketogenic">
           <input type="checkbox" id="ketogenic" onChange={handleDiets} />
           Ketogenic
         </label>
-        <label for="pescatarian">
+        <label htmlFor="pescatarian">
           <input type="checkbox" id="pescatarian" onChange={handleDiets} />
           Pescatarian
         </label>
-        <label for="paleo">
+        <label htmlFor="paleo">
           <input type="checkbox" id="paleo" onChange={handleDiets} />
           Paleo
         </label>
-        <label for="primal">
+        <label htmlFor="primal">
           <input type="checkbox" id="primal" onChange={handleDiets} />
           Primal
         </label>
-        <label for="whole30">
+        <label htmlFor="whole30">
           <input type="checkbox" id="whole30" onChange={handleDiets} />
           Whole30
         </label>

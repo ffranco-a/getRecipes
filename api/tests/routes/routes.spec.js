@@ -81,12 +81,20 @@ describe('ROUTES', () => {
     );
 
     // ↓ este test no me funciona y no sé por qué. Tira 404
-    it('should work if a valid recipe is posted', done => 
+    it('should work if a valid recipe is posted', () => 
       agent
         .post('/recipe')
         .send({ title: 'title', summary: 'summary' })
-        .then(() => done())
-        .catch(() => done(new Error('If you see this message, this test failed: should work if a valid recipe is posted')))
+        .expect(200)
     );
+
+    // ↓ a ver el mismo test pero mandandole done() ?
+    // it('should work if a valid recipe is posted', done => 
+    //   agent
+    //     .post('/recipe')
+    //     .send({ title: 'title', summary: 'summary' })
+    //     .then(() => done())
+    //     .catch(() => done(new Error('If you see this message, this test failed: should work if a valid recipe is posted')))
+    // );
   });
 });

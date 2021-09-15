@@ -50,7 +50,10 @@ export function getDiets() {
   return function (dispatch) {
     axios
       .get(`${LINK}/types`)
-      .then(response => dispatch({ type: GET_TYPES, payload: response.data }));
+      .then(response => dispatch({ type: GET_TYPES, payload: response.data }))
+      .catch(error => {
+        dispatch({ type: ERROR, payload: error.message });
+      });
   };
 }
 

@@ -2,10 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getDiets } from '../actions';
 import style from './moduleCSS/Diets.module.css';
+import Error from './Error.jsx';
 
-function Diets({ diets, getDiets }) {
+function Diets({ error, diets, getDiets }) {
   if (diets.length === 0) {
     getDiets();
+  }
+
+  if (error) {
+    return <Error error={error} />
   }
 
   return (

@@ -14,11 +14,11 @@ function App() {
     <Provider store={store}>
       <Route path="/" component={NavBar} />
       <Route exact path="/" component={Landing} />
-      <Route exact path="/home" component={Home} />
-      <Route exact path="/recipe/:id" component={Detail} />
-      <Route exact path="/create" component={CreateRecipe} />
-      <Route exact path="/diets" component={Diets} />
-      <Route exact path="/favorites" component={Favorites} />
+      <Route path="/home" component={Home} />
+      <Route path="/recipe/:id" component={Detail} />
+      <Route path="/create" component={CreateRecipe} />
+      <Route path="/diets" component={Diets} />
+      <Route path="/favorites" component={Favorites} />
     </Provider>
   );
 }
