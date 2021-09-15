@@ -41,8 +41,6 @@ function SearchBar({ getRecipes, getRecipesByName, order, filter }) {
   return (
     <div className={style.searchBarContainer}>
       <div className={style.searchBar}>
-        {/* <button onClick={handleRefresh} className={style.refresh} title="Refresh recipes list">
-        </button> */}
         <TiRefresh
           onClick={handleRefresh}
           className={style.refresh}
@@ -54,8 +52,6 @@ function SearchBar({ getRecipes, getRecipesByName, order, filter }) {
           placeholder="Search for recipes..."
           onChange={handleChange}
         />
-        {/* <button onClick={handleSearch} className={style.searchButton}>
-        </button> */}
         <TiZoom onClick={handleSearch} className={style.searchButton} />
         <label>Order by:</label>
         <select type="options" onChange={handleOrder}>
@@ -73,6 +69,10 @@ function SearchBar({ getRecipes, getRecipesByName, order, filter }) {
         <label for="gluten">
           <input type="checkbox" id="gluten" onChange={handleFilter} />
           Gluten Free
+        </label>
+        <label for="dairy">
+          <input type="checkbox" id="dairy" onChange={handleFilter} />
+          Dairy Free
         </label>
         <label for="vegetarian">
           <input type="checkbox" id="vegetarian" onChange={handleFilter} />

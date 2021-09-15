@@ -63,14 +63,14 @@ function Detail({ error, details, getRecipeById, match, addFavorite }) {
                 <div>
                   <b>Score:</b>
                   <br />
-                  {details.spoonacularScore}
+                  {details.spoonacularScore} %
                 </div>
               )}
               {details.healthScore !== 0 && (
                 <div>
                   <b>Health score:</b>
                   <br />
-                  {details.healthScore}
+                  {details.healthScore} %
                 </div>
               )}
             </div>

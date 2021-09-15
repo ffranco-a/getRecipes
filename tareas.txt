@@ -3,13 +3,11 @@ TAREAS PENDIENTES:
 
 ERROR CODES: revisar los números, y revisar qué se envía al front
 Tests!
-revisar Favorite list (no poder agregar una receta dos veces a favs.)
-
-buscar las sitios de comida para inspiracion
 
 __________________
 ------------------
 tareas terminadas:
+OK revisar Favorite list (no poder agregar una receta dos veces a favs.)
 OK manejar los tipos de recetas en mi db (recipe.diets.map(d => d.name))
 OK POST recipe: revisar el errorhandler, probablemente deba ser en el formulario controlado dle front nomás
 OK Agregar imagen!
@@ -75,13 +73,13 @@ OK *NO pueden utilizar el filtrado de la API externa
 OK *Botones de orden y action asociada
 
 -- Etapa VI
-*Página de detalle
-*Formulario de creación
+OK *Página de detalle
+OK *Formulario de creación
 
 
 
 -- tapa VII
 *Test de componente
-*Test de rutas de back-end
-*Test de modelo DB
+OK *Test de rutas de back-end
+OK *Test de modelo DB
 *Hacer correciones.
