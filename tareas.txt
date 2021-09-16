@@ -2,11 +2,11 @@
 TAREAS PENDIENTES:
 
 ERROR CODES: revisar los números, y revisar qué se envía al front
-Tests!
 
 __________________
 ------------------
 tareas terminadas:
+OK Tests!
 OK revisar Favorite list (no poder agregar una receta dos veces a favs.)
 OK manejar los tipos de recetas en mi db (recipe.diets.map(d => d.name))
 OK POST recipe: revisar el errorhandler, probablemente deba ser en el formulario controlado dle front nomás
