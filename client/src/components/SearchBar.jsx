@@ -6,6 +6,7 @@ import { TiRefresh, TiZoom } from 'react-icons/ti';
 
 function SearchBar({ getRecipes, getRecipesByName, order, filter }) {
   const [name, setName] = useState('');
+  const [searched, setSearched] = useState('');
   const [diets, setDiets] = useState([]);
 
   useEffect(() => {
@@ -14,6 +15,7 @@ function SearchBar({ getRecipes, getRecipesByName, order, filter }) {
 
   const handleRefresh = () => {
     getRecipes();
+    setSearched('');
   };
 
   const handleChange = e => {
@@ -22,6 +24,8 @@ function SearchBar({ getRecipes, getRecipesByName, order, filter }) {
 
   const handleSearch = () => {
     getRecipesByName(name);
+    setSearched(name);
+    setName('');
   };
 
   const handleOrder = e => {
@@ -49,13 +53,14 @@ function SearchBar({ getRecipes, getRecipesByName, order, filter }) {
         <input
           className={style.searchBarInput}
           type="text"
-          placeholder="Search for recipes..."
+          value={name}
+          placeholder={searched === '' ? "Search for recipes..." : searched}
           onChange={handleChange}
         />
         <TiZoom onClick={handleSearch} className={style.searchButton} />
         <label>Order by:</label>
-        <select type="options" onChange={handleOrder}>
-          <option>--Select--</option>
+        <select type="options" onChange={handleOrder} className={style.order}>
+          <option value="default">--Select--</option>
           <option value="title-ascendent">Title A-Z</option>
           <option value="title-descendent">Title Z-A</option>
           <option value="score-descendent">Best Score</option>

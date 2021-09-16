@@ -30,11 +30,15 @@ recipes.get('/', async (req, res) => {
     return res.json(filtered);
   }
 
-  // ↓ si no me pasan name, devuelvo "todas" las recetas,
-  let dbSearch = await dbGeneralSearch();
-  // return res.json(dbSearch); // ← ← ← ONLY USE IF YOU DON'T WANT TO CONSUME YOUR API POINTS/CALLS
-  let apiSearch = await apiGeneralSearch();
-  res.json([...dbSearch, ...apiSearch]);
+  try {
+    // ↓ si no me pasan name, devuelvo "todas" las recetas,
+    let dbSearch = await dbGeneralSearch();
+    // return res.json(dbSearch); // ← ← ← ONLY USE IF YOU DON'T WANT TO CONSUME YOUR API POINTS/CALLS
+    let apiSearch = await apiGeneralSearch();
+    res.json([...dbSearch, ...apiSearch]);
+  } catch (e) {
+    res.status(502).send({ message: "General search could not complete" })
+  }
 });
 
 ///////////////////////////////////////////////

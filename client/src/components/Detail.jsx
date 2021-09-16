@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getRecipeById, addFavorite } from '../actions';
 import style from './moduleCSS/Details.module.css';
-import { TiHeartOutline } from 'react-icons/ti';
+import { TiHeartOutline, TiArrowBackOutline } from 'react-icons/ti';
 import { Link } from 'react-router-dom';
 import Error from './Error.jsx';
 
@@ -21,7 +21,7 @@ function Detail({ error, details, getRecipeById, match, addFavorite }) {
   }
 
   if (!details.title) {
-    return <div className={style.detailsInfo}> Loading details.... if this process takes too long, try to <Link to="/">go back</Link> </div>;
+    return <div className={style.loading}> Loading details.... if this process takes too long, try to <Link to="/">go back</Link> </div>;
   }
 
   return (
@@ -31,6 +31,7 @@ function Detail({ error, details, getRecipeById, match, addFavorite }) {
         style={{ backgroundImage: `url(${details.image})` }}
       />
       <div className={style.detailsInfo}>
+        <Link to='/' className={style.goBack}><TiArrowBackOutline title="Go back" /></Link>
         <div className={style.detailsGrid}>
           <div className={style.detailsGrid1}>
             <div>

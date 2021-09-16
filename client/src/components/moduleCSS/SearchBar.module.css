@@ -21,10 +21,11 @@
   height: 20px;
   width: 400px;
   padding: 4px;
+  padding-left: 8px;
   border: none;
 }
 
-.searchBarInput:active, .searchBarInput:focus{
+.searchBarInput:active, .searchBarInput:focus, .order:active, .order:focus {
   outline: none
 }
 
@@ -66,6 +67,13 @@
 .searchButton:hover {
   background-color: #00000055;
   transition: background-color 0.3s;
+}
+
+.order {
+  margin-left: 10px;
+  border-radius: 5px;
+  padding: 3px;
+  border: none;
 }
 
 .filterDiets {

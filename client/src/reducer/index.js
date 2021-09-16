@@ -1771,9 +1771,14 @@ const reducer = (state = rootReducer, action) => {
       };
 
     case ORDER:
+      if (action.payload === "default") {
+        return {
+          ...state,
+          recipes: [ ...state.allRecipes ],
+        }
+      };
       let ordered = state.recipes;
       ordered.sort((a, b) => {
-        // ← no sé qué tan buena práctica sea hacer este tipo de funciones en el reducer, pero estoy contento con la forma en que manejé los cuatro ordenamientos en un solo lugar
         let A, B;
         if (action.payload.includes('title')) {
           A = a.title.toLowerCase();
