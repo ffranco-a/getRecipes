@@ -22,6 +22,12 @@ function SearchBar({ getRecipes, getRecipesByName, order, filter }) {
     setName(e.target.value);
   };
 
+  const handleEnter = e => {
+    if (e.code === 'Enter') {
+      handleSearch();
+    } else return;
+  }
+
   const handleSearch = () => {
     getRecipesByName(name);
     setSearched(name);
@@ -56,6 +62,7 @@ function SearchBar({ getRecipes, getRecipesByName, order, filter }) {
           value={name}
           placeholder={searched === '' ? "Search for recipes..." : searched}
           onChange={handleChange}
+          onKeyDown={handleEnter}
         />
         <TiZoom onClick={handleSearch} className={style.searchButton} />
         <label>Order by:</label>
