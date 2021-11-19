@@ -37,8 +37,8 @@ function Recipe({
         <div className={style.recipeCardInfo}>
           <h3>{title}</h3>
           <div className={style.scores}>
-            {score !== 0 && <span title={`Users rating score: ${score}/100`}><RiThumbUpFill /> = {score}%</span>}
-            {healthScore !== 0 && <span title={`Health Score: ${healthScore}/100`}><GiHealthNormal /> = {healthScore}%</span>}
+            {score !== 0 && <span title={`Users rating score: ${score}/100`}><RiThumbUpFill className={style.scoreIcon} /> {score}%</span>}
+            {healthScore !== 0 && <span title={`Health Score: ${healthScore}/100`}><GiHealthNormal className={style.scoreIcon} /> {healthScore}%</span>}
           </div>
           {diets.length > 0 && (
             <div className={style.diets}>

@@ -31,7 +31,7 @@ function Detail({ error, details, getRecipeById, match, addFavorite }) {
         style={{ backgroundImage: `url(${details.image})` }}
       />
       <div className={style.detailsInfo}>
-        <Link to='/' className={style.goBack}><TiArrowBackOutline title="Go back" /></Link>
+        <Link to='/home' className={style.goBack}><TiArrowBackOutline title="Go back" /></Link>
         <div className={style.detailsGrid}>
           <div className={style.detailsGrid1}>
             <div>

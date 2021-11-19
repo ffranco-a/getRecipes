@@ -17,7 +17,7 @@ recipe.post('/', async (req, res) => {
     ingredients,
     image,
   });
-  if (diets.vegetarian) newRecipe.addDiet(1);
+  if (diets.vegetarian) newRecipe.addDiet(1); // si en diets llega un arreglo de los ids, puedo usar addDiets o setDiets y pasar ese arreglo de ids directamente
   if (diets.vegan) newRecipe.addDiet(4);
   if (diets.glutenFree) newRecipe.addDiet(5);
   if (diets.ketogenic) newRecipe.addDiet(6);

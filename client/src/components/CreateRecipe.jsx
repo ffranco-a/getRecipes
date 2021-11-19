@@ -15,11 +15,12 @@ function CreateRecipe({ getRecipes }) {
     healthScore: 0,
     image: '',
   });
-  const [diets, setDiets] = useState({
-    vegetarian: false,
-    vegan: false,
-    glutenFree: false,
-  });
+  // const [diets, setDiets] = useState({
+  //   vegetarian: false,
+  //   vegan: false,
+  //   glutenFree: false,
+  // });
+  const [diets, setDiets] = useState({});
   const [instructions, setInstructions] = useState([]);
   const stepModel = {
     number: instructions.length + 1,
@@ -355,13 +356,13 @@ function CreateRecipe({ getRecipes }) {
       {/* ////////////////////////// */}
       {/* FINALLY: THE Create button */}
       {/* ////////////////////////// */}
-      <input
-        type="submit"
-        value="Create!"
-        disabled={handleDisableSubmit()}
+      <button
+        // type="button"
+        // value="Create!"
+        // disabled={handleDisableSubmit}
         onClick={handleSubmit}
         className={style.submitButton}
-      />
+      >Create!</button>
     </form>
   );
 }
