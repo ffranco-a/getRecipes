@@ -1,12 +1,28 @@
-<p align='left'>
-    <img src='https://static.wixstatic.com/media/85087f_0d84cbeaeb824fca8f7ff18d7c9eaafd~mv2.png/v1/fill/w_160,h_30,al_c,q_85,usm_0.66_1.00_0.01/Logo_completo_Color_1PNG.webp' </img>
-</p>
+# getRecipes() >
 
-# Individual Project - Henry Food
+###### this README is in progress
 
-<p align="right">
-  <img height="200" src="./cooking.png" />
-</p>
+### captures
+
+> Landing Page
+> ![Landing Page](./client/src/img/Landing.jpg)
+
+> Main
+> ![Main Site, recipe browser](./client/src/img/Main.jpg)
+
+> Recipe Creation, for example creating "Cacio e Pepe" recipe
+> ![Example of recipe creation: "Cacio e Pepe" recipe](./client/src/img/Creacion.jpg)
+> Once the recipe is created, it is published with the rest of the recipes
+> !["Cacio e Pepe" recipe posted](./client/src/img/Creacion2.jpg)
+
+> Search Recipes by name
+> ![Search Recipes by name](./client/src/img/Busqueda.jpg)
+
+> Details of a recipe
+> ![Details of a recipe](./client/src/img/Detalle.jpg)
+
+> Description of Diets
+> ![Description of Diets](./client/src/img/Dietas.jpg)
 
 ## Objetivos del Proyecto
 
@@ -15,17 +31,6 @@
 - Aprender mejores prácticas.
 - Aprender y practicar el workflow de GIT.
 - Usar y practicar testing.
-
-## Horarios y Fechas
-
-El proyecto tendrá una duración máxima de tres semanas. En el caso de que completan todas las tareas antes de dicho lapso podrán avisar a su Instructor para coordinar una fecha de presentación del trabajo (DEMO).
-
-## Comenzando
-
- 1. Forkear el repositorio para tener una copia del mismo en sus cuentas
- 2. Clonar el repositorio en sus computadoras para comenzar a trabajar
-
-Tendrán un `boilerplate` con la estructura general tanto del servidor como de cliente.
 
 __IMPORTANTE:__ Es necesario contar minimamente con la última versión estable de Node y NPM. Asegurarse de contar con ella para poder instalar correctamente las dependecias necesarias para correr el proyecto.
 
